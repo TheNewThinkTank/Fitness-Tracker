@@ -77,9 +77,9 @@ jobs:
       #   with:
       #     yamllint_file_or_dir: "./.github/workflows/test-wf.yml"
 
-      # - name: Run test suite
-      #   run: |
-      #     pipenv run test -v
+      - name: Run test suite
+        run: |
+          pipenv run test -v
       #     pipenv run test -k "test_training and not test_simulation"
 
       # docs:
