@@ -40,7 +40,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          pip install flake8 mypy pytest pandas # yamllint
+          pip install flake8 mypy pytest pandas tinydb # yamllint
 
       - name: Lint with flake8
         run: |
