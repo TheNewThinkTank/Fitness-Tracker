@@ -9,5 +9,5 @@ echo 'data inserted in database. Preparing figures ..'
 python3 src/model/plot_model.py --datatype real
 # open img/real_fitted_data_squat.png
 # open img/real_fitted_data_deadlift.png
-open img/real_fitted_data_seated_row.png
+# open img/real_fitted_data_seated_row.png
 # open img/real_fitted_data_barbell_bench_press.png
