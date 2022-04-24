@@ -10,6 +10,7 @@ import json
 import pandas as pd  # type: ignore
 
 import pathlib
+from typing import Tuple, List
 
 # from sklearn import linear_model
 from tinydb import TinyDB  # type: ignore
@@ -17,7 +18,7 @@ from tinydb import TinyDB  # type: ignore
 
 def get_df(
     log, splits: list = ["chest", "push"], exercise: str = "barbell_bench_press"
-):
+) -> pd.DataFrame:
     """."""
     frames = []
     for item in log:
@@ -29,7 +30,7 @@ def get_df(
     return pd.concat(frames)
 
 
-def one_rep_max_estimator(df):
+def one_rep_max_estimator(df) -> pd.DataFrame:
     """The ACSM (American College of Sports Medicine) protocol
     is used to implement the 1RM estimation
     """
@@ -39,9 +40,11 @@ def one_rep_max_estimator(df):
     return df.groupby("date")[["1RM"]].agg("max")
 
 
-def get_data(df):
+def get_data(df) -> Tuple[List[float], List[float]]:
     """
-    date_strs: workout-dates, y: max 1RM estimate in kg
+    date_strs: workout-dates
+    x: timestamps
+    y: max 1RM estimate in kg
     """
     date_strs = df.index.tolist()
     x = [datetime.fromisoformat(i).timestamp() for i in date_strs]
