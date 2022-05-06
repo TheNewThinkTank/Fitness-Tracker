@@ -20,6 +20,8 @@ import yaml  # type: ignore
 class SimulateWorkout:
     """Simulate a workout"""
 
+    __slots__ = "workout_date", "progress", "split"
+
     splits: list = ["back", "chest", "legs", "shoulders"]
     training_catalogue: str = "src/simulations/muscles_and_exercises.yaml"
     output_dir: str = "data/simulated/"
