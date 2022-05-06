@@ -2,9 +2,10 @@
 programs:
   program_1:
     splits: [legs, chest, back_and_biceps, shoulder_and_abs]
-    description: >\n
-      Focus on strength.\n
-      Heavy sets of 2-8 reps for key exercises (deadlift, squat, benchpress, seated_row)
+    description: |
+      Focus on strength.
+      Heavy sets of 2-8 reps for key exercises
+      (deadlift, squat, benchpress, seated_row)
     start: 2021-12-11
     end: 2022-03-19
     program_iterations: 10
@@ -12,9 +13,10 @@ programs:
 
   program_2:
     splits: [push, pull, legs]
-    description: >\n
-      Focus on strength.\n
-      Heavy sets of 2-8 reps for key exercises (deadlift, squat, benchpress, seated_row)
+    description: |
+      Focus on strength.
+      Heavy sets of 2-8 reps for key exercises
+      (deadlift, squat, benchpress, seated_row)
     start: 2022-03-26
     end: 2022-MM-DD
     program_iterations: 10
@@ -22,9 +24,10 @@ programs:
 
   program_3:
     splits: [push, pull, legs]
-    description: >\n
-      Focus on volume and intensity.\n
-      Moderate sets of 6-12 reps for key exercises (deadlift, squat, benchpress, seated_row)
+    description: |
+      Focus on volume and intensity.
+      Moderate sets of 6-12 reps for key exercises
+      (deadlift, squat, benchpress, seated_row)
     start: 2022-MM-DD
     end: 2022-MM-DD
     program_iterations: 10
