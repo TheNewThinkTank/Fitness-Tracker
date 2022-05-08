@@ -23,10 +23,11 @@ programs:
     number_of_workouts: 30
 
   program_3:
-    splits: [push, pull, legs]
+    splits: [back_and_chest, legs, shoulders_and_arms]
     description: |
+      German volume training.
       Focus on volume and intensity.
-      Moderate sets of 6-12 reps for key exercises
+      10 Moderate sets of 10 reps for key exercises
       (deadlift, squat, benchpress, seated_row)
     start: 2022-MM-DD
     end: 2022-MM-DD
