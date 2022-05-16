@@ -29,6 +29,7 @@ programs:
       Focus on volume and intensity.
       10 Moderate sets of 10 reps for key exercises
       (deadlift, squat, benchpress, seated_row)
+      with 90 seconds rest between sets
     start: 2022-MM-DD
     end: 2022-MM-DD
     program_iterations: 10
