@@ -8,7 +8,6 @@ import json
 import os
 import sys
 from datetime import datetime
-from turtle import position
 
 # from pprint import pprint as pp
 import matplotlib.pyplot as plt  # type: ignore
