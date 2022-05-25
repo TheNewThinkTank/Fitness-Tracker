@@ -39,7 +39,7 @@ def create_plots(datatype: str, x: list, y: list, exercise: str) -> None:
         # ax = sns.regplot(x=x, y=y, ci=68, truncate=False)
         ax = sns.regplot(x=x_prg1, y=y_prg1, ci=68, truncate=False, label="Program_1")
         sns.regplot(x=x_prg2, y=y_prg2, ci=68, truncate=True, label="Program_2")
-        ax.set_title(f"{exercise}")
+        ax.set_title(f"{exercise}", fontsize=30)
 
     xticks = ax.get_xticks()
     xticks_dates = [datetime.fromtimestamp(x).strftime("%Y-%m-%d") for x in xticks]
@@ -47,8 +47,8 @@ def create_plots(datatype: str, x: list, y: list, exercise: str) -> None:
     ax.set_xticklabels(xticks_dates)
     plt.ylim(0, max(y) + 5)
     plt.xticks(rotation=45)
-    ax.set_ylabel("1 RM estimates [kg]")
-    ax.legend(loc="lower right")
+    ax.set_ylabel("1 RM estimates [kg]", fontsize=20)
+    ax.legend(loc="lower right", fontsize=20)
     # plt.savefig(f"img/{datatype}_fitted_data_{exercise}.png")
     plt.savefig(f"img/{datatype}_fitted_data_{exercise}_splines.png")
     plt.clf()  # clear figure before next plot
