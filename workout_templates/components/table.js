@@ -36,6 +36,7 @@ class ThreeSetTable extends HTMLElement {
 
       </style>
 
+        <h2 class="exercise_name">${this.getAttribute('exercise')}</h2>
         <table class="GeneratedTable">
           <thead>
             <tr>
@@ -104,6 +105,7 @@ class TwoSetTable extends HTMLElement {
 
       </style>
 
+        <h2 class="exercise_name">${this.getAttribute('exercise')}</h2>
         <table class="GeneratedTable">
           <thead>
             <tr>
