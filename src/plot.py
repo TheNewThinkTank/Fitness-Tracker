@@ -5,10 +5,9 @@ Purpose: Plot weight-training data
 """
 
 import json
+
 import matplotlib.pyplot as plt  # type: ignore
 import pandas as pd  # type: ignore
-
-# import numpy as np
 import seaborn as sns  # type: ignore
 from tinydb import TinyDB  # type: ignore
 
