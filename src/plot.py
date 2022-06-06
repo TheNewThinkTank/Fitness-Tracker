@@ -12,13 +12,13 @@ import seaborn as sns  # type: ignore
 from tinydb import TinyDB  # type: ignore
 
 from CRUD.training import show_exercise  # type: ignore
+from helpers.get_exercises import get_available_exercises  # type: ignore
 
 
-def get_data(date, exercises):
+def get_data(date, split) -> dict:
     """Prepare pandas dataframes with training data for plotting"""
 
     datatype = "real"
-
     data = json.load(open(file="./config.json", encoding="utf-8"))
     db = (
         TinyDB(data["real_workout_database"])
@@ -30,18 +30,23 @@ def get_data(date, exercises):
         if datatype == "real"
         else db.table(data["simulated_weight_table"])
     )
+    training_catalogue = data["training_catalogue"]
+    exercises = get_available_exercises(training_catalogue, split)
 
-    return [pd.DataFrame(data=show_exercise(table, ex, date)) for ex in exercises]
+    return {
+        ex: df
+        for ex in exercises
+        if not (df := pd.DataFrame(data=show_exercise(table, ex, date))).empty
+    }
 
 
 def create_barplots(dfs, date):
-    """Plot training data from specific date"""
+    """Plot training data for specific date"""
 
     # TODO: highten legend transparency
     # TODO: set figure-level x- and y labels ("Set No." and "Repetitions")
 
     sns.set_theme(style="white", context="talk")
-
     f, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(9, 7), sharex=True)
 
     sns.barplot(
@@ -98,8 +103,9 @@ def create_barplots(dfs, date):
 def main():
     """Get data and create figure."""
     date = "2021-12-11"
-    dfs = get_data(date, ["squat", "leg_extention", "deadlift"])
-    for df in dfs:
+    dfs = get_data(date, "legs")
+    for ex, df in dfs.items():
+        print(ex)
         print(df)
     # create_barplots(dfs, date)
 
