@@ -17,6 +17,12 @@ Each program is shown in the legend)
 | :--------------------------------------------------------------------------------------: | :--------------------------------------------------------------------: |
 | ![fitted_data_barbell_bench_press](img/real_fitted_data_barbell_bench_press_splines.png) | ![fitted_data_seated_row](img/real_fitted_data_seated_row_splines.png) |
 
+Below: comparison between first leg workout of program 1
+and last leg workout of program 2 for three selected exercises.<br>
+
+| ![first_leg_workout_pgm1](img/workout_2021-12-11.png) | ![last_leg_workout_pgm2](img/workout_2022-05-28.png) |
+| :---------------------------------------------------: | :--------------------------------------------------: |
+
 ## Features
 
 - Program logging

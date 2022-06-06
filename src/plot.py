@@ -49,45 +49,44 @@ def create_barplots(dfs, date):
     sns.set_theme(style="white", context="talk")
     f, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(9, 7), sharex=True)
 
-    keys = list(dfs.keys())
-    values = list(dfs.values())
-
     # debugging
-    for k, v in zip(keys, values):
-        print(k)
-        print(v)
+    # keys = list(dfs.keys())
+    # values = list(dfs.values())
+    # for k, v in zip(keys, values):
+    #     print(k)
+    #     print(v)
 
     sns.barplot(
-        x=values[0]["set no."],
-        y=values[0]["reps"],
-        hue=values[0]["weight"],
+        x=dfs["squat"]["set no."],
+        y=dfs["squat"]["reps"],
+        hue=dfs["squat"]["weight"],
         palette="rocket",
         ax=ax1,
     )
     ax1.axhline(0, color="k", clip_on=False)
-    ax1.set_ylabel(keys[0])
+    ax1.set_ylabel("squat")
     ax1.bar_label(ax1.containers[0])
 
     sns.barplot(
-        x=values[1]["set no."],
-        y=values[1]["reps"],
-        hue=values[1]["weight"],
+        x=dfs["deadlift"]["set no."],
+        y=dfs["deadlift"]["reps"],
+        hue=dfs["deadlift"]["weight"],
         palette="vlag",
         ax=ax2,
     )
     ax2.axhline(0, color="k", clip_on=False)
-    ax2.set_ylabel(keys[1])
+    ax2.set_ylabel("deadlift")
     ax2.bar_label(ax2.containers[0])
 
     sns.barplot(
-        x=values[3]["set no."],
-        y=values[3]["reps"],
-        hue=values[3]["weight"],
+        x=dfs["leg_extention"]["set no."],
+        y=dfs["leg_extention"]["reps"],
+        hue=dfs["leg_extention"]["weight"],
         palette="deep",
         ax=ax3,
     )
     ax3.axhline(0, color="k", clip_on=False)
-    ax3.set_ylabel(keys[3])
+    ax3.set_ylabel("leg_extention")
     ax3.bar_label(ax3.containers[0])
 
     sns.despine(bottom=True)
@@ -103,16 +102,19 @@ def create_barplots(dfs, date):
     sns.move_legend(ax3, "center right", bbox_to_anchor=(1, 1))
 
     # ax3.legend(fancybox=True, framealpha=0.5)
-
-    # plt.show()
     plt.savefig(f"img/workout_{date}.png")
 
 
 def main():
     """Get data and create figure."""
-    date = "2021-12-11"
-    dfs = get_data(date, "legs")
-    create_barplots(dfs, date)
+    dates = [
+        "2021-12-11",
+        # "2022-03-14",
+        "2022-05-28",
+    ]
+    for date in dates:
+        create_barplots(get_data(date, "legs"), date)
+    # plt.show()
 
 
 if __name__ == "__main__":
