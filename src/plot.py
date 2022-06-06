@@ -49,37 +49,45 @@ def create_barplots(dfs, date):
     sns.set_theme(style="white", context="talk")
     f, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(9, 7), sharex=True)
 
+    keys = list(dfs.keys())
+    values = list(dfs.values())
+
+    # debugging
+    for k, v in zip(keys, values):
+        print(k)
+        print(v)
+
     sns.barplot(
-        x=dfs[0]["set no."],
-        y=dfs[0]["reps"],
-        hue=dfs[0]["weight"],
+        x=values[0]["set no."],
+        y=values[0]["reps"],
+        hue=values[0]["weight"],
         palette="rocket",
         ax=ax1,
     )
     ax1.axhline(0, color="k", clip_on=False)
-    ax1.set_ylabel("squat")
+    ax1.set_ylabel(keys[0])
     ax1.bar_label(ax1.containers[0])
 
     sns.barplot(
-        x=dfs[1]["set no."],
-        y=dfs[1]["reps"],
-        hue=dfs[1]["weight"],
+        x=values[1]["set no."],
+        y=values[1]["reps"],
+        hue=values[1]["weight"],
         palette="vlag",
         ax=ax2,
     )
     ax2.axhline(0, color="k", clip_on=False)
-    ax2.set_ylabel("leg extention")
+    ax2.set_ylabel(keys[1])
     ax2.bar_label(ax2.containers[0])
 
     sns.barplot(
-        x=dfs[2]["set no."],
-        y=dfs[2]["reps"],
-        hue=dfs[2]["weight"],
+        x=values[2]["set no."],
+        y=values[2]["reps"],
+        hue=values[2]["weight"],
         palette="deep",
         ax=ax3,
     )
     ax3.axhline(0, color="k", clip_on=False)
-    ax3.set_ylabel("deadlift")
+    ax3.set_ylabel(keys[2])
     ax3.bar_label(ax3.containers[0])
 
     sns.despine(bottom=True)
@@ -96,7 +104,7 @@ def create_barplots(dfs, date):
 
     # ax3.legend(fancybox=True, framealpha=0.5)
 
-    plt.show()
+    # plt.show()
     # plt.savefig(f"img/workout_{date}.png")
 
 
@@ -104,10 +112,7 @@ def main():
     """Get data and create figure."""
     date = "2021-12-11"
     dfs = get_data(date, "legs")
-    for ex, df in dfs.items():
-        print(ex)
-        print(df)
-    # create_barplots(dfs, date)
+    create_barplots(dfs, date)
 
 
 if __name__ == "__main__":

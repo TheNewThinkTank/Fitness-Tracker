@@ -3,7 +3,7 @@
 
 import json
 
-import yaml
+import yaml  # type: ignore
 
 
 def get_available_exercises(training_catalogue, split):
