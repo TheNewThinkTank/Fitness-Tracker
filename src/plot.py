@@ -91,14 +91,16 @@ def create_barplots(dfs, date):
 
     # ax3.legend(fancybox=True, framealpha=0.5)
 
-    plt.savefig(f"img/workout_{date}.png")
+    plt.show()
+    # plt.savefig(f"img/workout_{date}.png")
 
 
 def main():
     """Get data and create figure."""
     date = "2021-12-11"
-    dfs = get_data(date, ["squat", "leg extention", "deadlift"])
-    print(dfs)
+    dfs = get_data(date, ["squat", "leg_extention", "deadlift"])
+    for df in dfs:
+        print(df)
     # create_barplots(dfs, date)
 
 
