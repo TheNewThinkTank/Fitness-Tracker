@@ -1,7 +1,8 @@
 {
-    "real_workout_database": "data/db.json",
-    "simulated_workout_database": "data/sim_db.json",
-    "real_weight_table": "weight_training_log",
-    "real_disciplines_table": "disciplines_log",
-    "simulated_weight_table": "weight_training_log"
+  "real_workout_database": "data/db.json",
+  "simulated_workout_database": "data/sim_db.json",
+  "real_weight_table": "weight_training_log",
+  "real_disciplines_table": "disciplines_log",
+  "simulated_weight_table": "weight_training_log",
+  "training_catalogue": "src/helpers/muscles_and_exercises.yaml"
 }

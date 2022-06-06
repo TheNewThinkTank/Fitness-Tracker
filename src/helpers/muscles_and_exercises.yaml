@@ -1,0 +1,41 @@
+---
+legs:
+  - squat
+  - deadlift
+  - legpress
+  - barbell_lunge
+  - leg_extention
+  - hamstring_curl
+  - standing_calf_raise
+  - seated_calf_raise
+
+chest:
+  - barbell_bench_press
+  - dumbbell_fly
+  - barbell_incline_press
+  - cable_crossover
+  - dumbbell_pullover
+  - dip
+
+back:
+  - lat_pulldown
+  - seated_row
+  - chinup
+  - pullup
+  - face_pull
+  - barbell_shrug
+
+shoulders:
+  - side_laterals
+  - front_laterals
+  - rear_laterals
+  - dumbbell_military_press
+  - cable_crossover
+  - arnold_press
+
+abs:
+  - crunch
+  - side_jackknife
+  - toe_to_bar
+  - leg_raise
+  - Reverse_crunch

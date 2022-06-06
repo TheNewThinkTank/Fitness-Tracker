@@ -23,7 +23,7 @@ class SimulateWorkout:
     __slots__ = "workout_date", "progress", "split"
 
     splits: list = ["back", "chest", "legs", "shoulders"]
-    training_catalogue: str = "src/simulations/muscles_and_exercises.yaml"
+    training_catalogue: str = "src/simulations/muscles_and_exercises_weight_ranges.yaml"
     output_dir: str = "data/simulated/"
 
     def __init__(self, workout_date, progress) -> None:
