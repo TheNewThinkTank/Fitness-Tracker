@@ -80,14 +80,14 @@ def create_barplots(dfs, date):
     ax2.bar_label(ax2.containers[0])
 
     sns.barplot(
-        x=values[2]["set no."],
-        y=values[2]["reps"],
-        hue=values[2]["weight"],
+        x=values[3]["set no."],
+        y=values[3]["reps"],
+        hue=values[3]["weight"],
         palette="deep",
         ax=ax3,
     )
     ax3.axhline(0, color="k", clip_on=False)
-    ax3.set_ylabel(keys[2])
+    ax3.set_ylabel(keys[3])
     ax3.bar_label(ax3.containers[0])
 
     sns.despine(bottom=True)
@@ -105,7 +105,7 @@ def create_barplots(dfs, date):
     # ax3.legend(fancybox=True, framealpha=0.5)
 
     # plt.show()
-    # plt.savefig(f"img/workout_{date}.png")
+    plt.savefig(f"img/workout_{date}.png")
 
 
 def main():
