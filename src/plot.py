@@ -40,6 +40,18 @@ def get_data(date, split) -> dict:
     }
 
 
+def compare_workouts(dfs_1, dfs_2):
+
+    common_exercises = []
+    for k in sorted(set(dfs_1.keys()).intersection(set(dfs_2.keys()))):
+        common_exercises.append(k)
+
+    dfs_1_common = {k: v for k, v in dfs_1.items() if k in common_exercises}
+    dfs_2_common = {k: v for k, v in dfs_2.items() if k in common_exercises}
+
+    return dfs_1_common, dfs_2_common
+
+
 def create_barplots(dfs, date):
     """Plot training data for specific date"""
 
@@ -49,44 +61,40 @@ def create_barplots(dfs, date):
     sns.set_theme(style="white", context="talk")
     f, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(9, 7), sharex=True)
 
-    # debugging
-    # keys = list(dfs.keys())
-    # values = list(dfs.values())
-    # for k, v in zip(keys, values):
-    #     print(k)
-    #     print(v)
+    keys = list(dfs.keys())
+    values = list(dfs.values())
 
     sns.barplot(
-        x=dfs["squat"]["set no."],
-        y=dfs["squat"]["reps"],
-        hue=dfs["squat"]["weight"],
+        x=values[0]["set no."],
+        y=values[0]["reps"],
+        hue=values[0]["weight"],
         palette="rocket",
         ax=ax1,
     )
     ax1.axhline(0, color="k", clip_on=False)
-    ax1.set_ylabel("squat")
+    ax1.set_ylabel(keys[0])
     ax1.bar_label(ax1.containers[0])
 
     sns.barplot(
-        x=dfs["deadlift"]["set no."],
-        y=dfs["deadlift"]["reps"],
-        hue=dfs["deadlift"]["weight"],
+        x=values[1]["set no."],
+        y=values[1]["reps"],
+        hue=values[1]["weight"],
         palette="vlag",
         ax=ax2,
     )
     ax2.axhline(0, color="k", clip_on=False)
-    ax2.set_ylabel("deadlift")
+    ax2.set_ylabel(keys[1])
     ax2.bar_label(ax2.containers[0])
 
     sns.barplot(
-        x=dfs["leg_extention"]["set no."],
-        y=dfs["leg_extention"]["reps"],
-        hue=dfs["leg_extention"]["weight"],
+        x=values[2]["set no."],
+        y=values[2]["reps"],
+        hue=values[2]["weight"],
         palette="deep",
         ax=ax3,
     )
     ax3.axhline(0, color="k", clip_on=False)
-    ax3.set_ylabel("leg_extention")
+    ax3.set_ylabel(keys[2])
     ax3.bar_label(ax3.containers[0])
 
     sns.despine(bottom=True)
@@ -102,19 +110,29 @@ def create_barplots(dfs, date):
     sns.move_legend(ax3, "center right", bbox_to_anchor=(1, 1))
 
     # ax3.legend(fancybox=True, framealpha=0.5)
-    plt.savefig(f"img/workout_{date}.png")
+    # plt.savefig(f"img/workout_{date}.png")
 
 
 def main():
     """Get data and create figure."""
+
     dates = [
         "2021-12-11",
         # "2022-03-14",
         "2022-05-28",
     ]
-    for date in dates:
-        create_barplots(get_data(date, "legs"), date)
-    # plt.show()
+
+    split = "legs"
+
+    dfs_first_leg_workout = get_data(dates[0], split)
+    dfs_last_leg_workout = get_data(dates[-1], split)
+    dfs_1_common, dfs_2_common = compare_workouts(
+        dfs_first_leg_workout, dfs_last_leg_workout
+    )
+
+    create_barplots(dfs_1_common, dates[0])
+    create_barplots(dfs_2_common, dates[-1])
+    plt.show()
 
 
 if __name__ == "__main__":
