@@ -58,11 +58,32 @@ def create_barplots(dfs, date):
     # TODO: highten legend transparency
     # TODO: set figure-level x- and y labels ("Set No." and "Repetitions")
 
-    sns.set_theme(style="white", context="talk")
-    f, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(9, 7), sharex=True)
-
     keys = list(dfs.keys())
     values = list(dfs.values())
+
+    sns.set_theme(style="white", context="talk")
+
+    match len(dfs):
+        case 3:
+            print("3 exercises to plot")
+            f, (ax1, ax2, ax3) = plt.subplots(len(dfs), 1, figsize=(11, 9), sharex=True)
+        case 4:
+            print("4 exercises to plot")
+            f, (ax1, ax2, ax3, ax4) = plt.subplots(
+                len(dfs), 1, figsize=(11, 9), sharex=True
+            )
+            sns.barplot(
+                x=values[3]["set no."],
+                y=values[3]["reps"],
+                hue=values[3]["weight"],
+                palette="rocket",
+                ax=ax4,
+            )
+            ax4.axhline(0, color="k", clip_on=False)
+            ax4.set_ylabel(keys[3])
+            ax4.bar_label(ax4.containers[0])
+        case _:
+            print("Wrong number of exercises. Should be 3 or 4.")
 
     sns.barplot(
         x=values[0]["set no."],
@@ -101,16 +122,9 @@ def create_barplots(dfs, date):
     plt.setp(f.axes, yticks=[])
     plt.tight_layout(h_pad=2)
     plt.title(f"Workout date: {date}")
-
-    # plt.ylabel("Repetitions")
-    # plt.xlabel("Set No.")
-
     sns.move_legend(ax1, "upper right", bbox_to_anchor=(1, 1))
-    # sns.move_legend(ax2, "center right", bbox_to_anchor=(1, 1))
     sns.move_legend(ax3, "center right", bbox_to_anchor=(1, 1))
-
-    # ax3.legend(fancybox=True, framealpha=0.5)
-    # plt.savefig(f"img/workout_{date}.png")
+    plt.savefig(f"img/workout_{date}.png")
 
 
 def main():
@@ -132,7 +146,7 @@ def main():
 
     create_barplots(dfs_1_common, dates[0])
     create_barplots(dfs_2_common, dates[-1])
-    plt.show()
+    # plt.show()
 
 
 if __name__ == "__main__":
