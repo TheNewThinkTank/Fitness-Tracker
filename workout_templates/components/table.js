@@ -1,10 +1,4 @@
-class ThreeSetTable extends HTMLElement {
-    constructor() {
-      super();
-    }
-  
-  connectedCallback() {
-    this.innerHTML = `
+tableStyle = `
       <style>
 
       .exercise_name {
@@ -34,7 +28,15 @@ class ThreeSetTable extends HTMLElement {
       }
 
       </style>
+`
 
+class ThreeSetTable extends HTMLElement {
+    constructor() {
+      super();
+    }
+  
+  connectedCallback() {
+    this.innerHTML = tableStyle + `
         <h2 class="exercise_name">${this.getAttribute('exercise')}</h2>
         <table class="GeneratedTable">
           <thead>
@@ -72,37 +74,7 @@ class TwoSetTable extends HTMLElement {
     }
   
   connectedCallback() {
-    this.innerHTML = `
-      <style>
-
-      .exercise_name {
-        display: grid;
-        place-items: center;
-      }
-
-      table.GeneratedTable {
-        width: 100%;
-        background-color: #ffffff;
-        border-collapse: collapse;
-        border-width: 2px;
-        border-color: #002fff;
-        border-style: solid;
-        color: #000000;
-      }
-
-      table.GeneratedTable :is(td, th) {
-        border-width: 1px;
-        border-color: #003cff;
-        border-style: solid;
-        padding: 3px;
-      }
-
-      table.GeneratedTable thead {
-        background-color: #009dff;
-      }
-
-      </style>
-
+    this.innerHTML = tableStyle + `
         <h2 class="exercise_name">${this.getAttribute('exercise')}</h2>
         <table class="GeneratedTable">
           <thead>
