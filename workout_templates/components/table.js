@@ -22,8 +22,7 @@ class ThreeSetTable extends HTMLElement {
         color: #000000;
       }
 
-      table.GeneratedTable td,
-      table.GeneratedTable th {
+      table.GeneratedTable :is(td, th) {
         border-width: 1px;
         border-color: #003cff;
         border-style: solid;
@@ -91,8 +90,7 @@ class TwoSetTable extends HTMLElement {
         color: #000000;
       }
 
-      table.GeneratedTable td,
-      table.GeneratedTable th {
+      table.GeneratedTable :is(td, th) {
         border-width: 1px;
         border-color: #003cff;
         border-style: solid;
