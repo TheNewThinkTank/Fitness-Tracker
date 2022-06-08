@@ -30,76 +30,45 @@ tableStyle = `
       </style>
 `
 
-class ThreeSetTable extends HTMLElement {
+class SetsTable extends HTMLElement {
     constructor() {
       super();
     }
   
   connectedCallback() {
-    this.innerHTML = tableStyle + `
-        <h2 class="exercise_name">${this.getAttribute('exercise')}</h2>
-        <table class="GeneratedTable">
-          <thead>
-            <tr>
-              <th>set no</th>
-              <th>reps</th>
-              <th>weight / kg</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="exercise_name"><strong>1</strong></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td class="exercise_name"><strong>2</strong></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td class="exercise_name"><strong>3</strong></td>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
-    `;
-  }
-}
-
-class TwoSetTable extends HTMLElement {
-    constructor() {
-      super();
+    
+    let tableHtml = `
+    <h2 class="exercise_name">${this.getAttribute('exercise')}</h2>
+    <table class="GeneratedTable">
+      <thead>
+        <tr>
+          <th>set no</th>
+          <th>reps</th>
+          <th>weight / kg</th>
+        </tr>
+      </thead>
+      <tbody>
+      `;
+    
+    let numberOfSets = parseInt(this.getAttribute('numberOfSets'))
+    
+    for (let i = 1; i <= numberOfSets; i++) {
+      tableHtml += `<tr>
+      <td class="exercise_name"><strong>${i}</strong></td>
+      <td></td>
+      <td></td>
+    </tr>
+    `
     }
-  
-  connectedCallback() {
-    this.innerHTML = tableStyle + `
-        <h2 class="exercise_name">${this.getAttribute('exercise')}</h2>
-        <table class="GeneratedTable">
-          <thead>
-            <tr>
-              <th>set no</th>
-              <th>reps</th>
-              <th>weight / kg</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="exercise_name"><strong>1</strong></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td class="exercise_name"><strong>2</strong></td>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
+    
+    tableHtml += `
+    </tbody>
+    </table>
     `;
+
+    this.innerHTML = tableStyle + tableHtml
+
   }
 }
 
-customElements.define('three-set-table-component', ThreeSetTable);
-customElements.define('two-set-table-component', TwoSetTable);
+customElements.define('table-component', SetsTable);
