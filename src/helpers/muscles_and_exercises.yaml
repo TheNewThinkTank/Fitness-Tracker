@@ -5,7 +5,7 @@ legs:
   - legpress
   - barbell_lunge
   - leg_extention
-  - hamstring_curl
+  - leg_curl
   - standing_calf_raise
   - seated_calf_raise
 

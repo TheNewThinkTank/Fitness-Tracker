@@ -5,7 +5,7 @@ legs:
   - legpress: [50, 120]
   - barbell_lunge: [20, 70]
   - leg_extention: [30, 70]
-  - hamstring_curl: [10, 45]
+  - leg_curl: [10, 45]
   - standing_calf_raise: [5, 30]
   - seated_calf_raise: [5, 20]
 

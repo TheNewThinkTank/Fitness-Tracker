@@ -1,0 +1,31 @@
+{
+  "date": "2022-06-17",
+  "split": "legs",
+  "gym": "Rixos downtown, Antalya, Turkey",
+  "exercises": {
+    "squat": [
+      { "set no.": 1, "reps": 4, "weight": "120 kg" },
+      { "set no.": 2, "reps": 3, "weight": "120 kg" },
+      { "set no.": 3, "reps": 3, "weight": "100 kg" }
+    ],
+    "deadlift": [
+      { "set no.": 1, "reps": 12, "weight": "60 kg" },
+      { "set no.": 2, "reps": 12, "weight": "60 kg" },
+      { "set no.": 3, "reps": 12, "weight": "60 kg" }
+    ],
+    "leg_extention": [
+      { "set no.": 1, "reps": 6, "weight": "91 kg" },
+      { "set no.": 2, "reps": 8, "weight": "77 kg" },
+      { "set no.": 3, "reps": 12, "weight": "63 kg" }
+    ],
+    "seated_calf_raise": [
+      { "set no.": 1, "reps": 15, "weight": "44 kg" },
+      { "set no.": 2, "reps": 12, "weight": "58 kg" },
+      { "set no.": 3, "reps": 12, "weight": "58 kg" }
+    ],
+    "leg_curl": [
+      { "set no.": 1, "reps": 15, "weight": "35 kg" },
+      { "set no.": 2, "reps": 12, "weight": "49 kg" }
+    ]
+  }
+}
