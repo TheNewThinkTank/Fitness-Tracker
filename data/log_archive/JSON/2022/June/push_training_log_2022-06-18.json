@@ -1,0 +1,40 @@
+{
+  "date": "2022-06-18",
+  "split": "push",
+  "gym": "Rixos downtown, Antalya, Turkey",
+  "exercises": {
+    "barbell_bench_press": [
+      { "set no.": 1, "reps": 4, "weight": "80 kg" },
+      { "set no.": 2, "reps": 4, "weight": "70 kg" },
+      { "set no.": 3, "reps": 6, "weight": "60 kg" }
+    ],
+    "dumbbell_incline_press": [
+      { "set no.": 1, "reps": 4, "weight": "60 kg" },
+      { "set no.": 2, "reps": 8, "weight": "48 kg" },
+      { "set no.": 3, "reps": 8, "weight": "48 kg" }
+    ],
+    "standing_barbell_military_press": [
+      { "set no.": 1, "reps": 10, "weight": "30 kg" },
+      { "set no.": 2, "reps": 6, "weight": "30 kg" },
+      { "set no.": 3, "reps": 7, "weight": "30 kg" }
+    ],
+    "dumbbell_flys": [
+      { "set no.": 1, "reps": 12, "weight": "32 kg" },
+      { "set no.": 2, "reps": 9, "weight": "32 kg" },
+      { "set no.": 3, "reps": 7, "weight": "32 kg" }
+    ],
+    "dumbbell_incline_front_lateral_raise": [
+      { "set no.": 1, "reps": 6, "weight": "16 kg" },
+      { "set no.": 2, "reps": 8, "weight": "12 kg" },
+      { "set no.": 3, "reps": 10, "weight": "12 kg" }
+    ],
+    "french_press": [
+      { "set no.": 1, "reps": 12, "weight": "22 kg" },
+      { "set no.": 2, "reps": 12, "weight": "22 kg" }
+    ],
+    "cable_triceps_extention": [
+      { "set no.": 1, "reps": 12, "weight": "21.25 kg" },
+      { "set no.": 2, "reps": 12, "weight": "21.25 kg" }
+    ]
+  }
+}
