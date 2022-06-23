@@ -14,6 +14,7 @@ def get_available_exercises(training_catalogue, split):
 
 
 def main():
+    """_summary_"""
     splits: list = ["back"]  # , "chest", "legs", "shoulders"]
 
     data = json.load(open(file="./config.json", encoding="utf-8"))

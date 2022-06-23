@@ -6,6 +6,7 @@ https://tinydb.readthedocs.io/en/latest/getting-started.html
 """
 
 import json
+from typing import Dict, List
 from tinydb import Query, TinyDB  # type: ignore
 
 
@@ -31,7 +32,7 @@ def get_all(log):
     return log.all()
 
 
-def describe_workout(log, date):
+def describe_workout(log, date) -> Dict:
     """Simple summary statistics for each exercise"""
 
     d = {}
@@ -44,7 +45,7 @@ def describe_workout(log, date):
     return d
 
 
-def show_exercise(log, exercise, date):
+def show_exercise(log, exercise, date) -> List:
     """Show detailed data for selected exercise"""
 
     for item in log:
@@ -54,10 +55,16 @@ def show_exercise(log, exercise, date):
                     return v
 
 
-def analyze_workout(log, exercise):
-    """Deeper analysis of workout"""
+def analyze_workout(table, exercise: str) -> List:
+    """Deeper analysis of workout
+
+    :param table: A TinyDB table
+    :type table: TinyDB table
+    :param exercise: Name of exercise to analyze
+    :type exercise: string
+    """
     Log = Query()
-    data = log.search(Log["exercises"][exercise].exists())
+    data = table.search(Log["exercises"][exercise].exists())
     return [d["exercises"][exercise] for d in data]
 
 
