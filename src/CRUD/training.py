@@ -53,6 +53,7 @@ def show_exercise(log, exercise, date) -> List:
             for k, v in item["exercises"].items():
                 if k == exercise:
                     return v
+    return []
 
 
 def analyze_workout(table, exercise: str) -> List:
