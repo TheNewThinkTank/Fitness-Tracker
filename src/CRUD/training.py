@@ -10,9 +10,15 @@ from typing import Dict, List
 from tinydb import Query, TinyDB  # type: ignore
 
 
-def get_dates_and_muscle_groups(log):
-    """Returns all workout dates with their corresponding muscle groups."""
-    return {item["date"]: item["split"] for item in log}
+def get_dates_and_muscle_groups(table) -> Dict:
+    """Returns all workout dates with their corresponding muscle groups.
+
+    :param table: A TinyDB table
+    :type table: TinyDB table
+    :return: A dictionary of workout dates and corresponding splits / musclegrous
+    :rtype: Dictionary
+    """
+    return {item["date"]: item["split"] for item in table}
 
 
 def show_exercises(log, date):
