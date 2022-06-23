@@ -19,7 +19,9 @@ from tinydb import TinyDB  # type: ignore
 def get_df(
     log, splits: list = ["chest", "push"], exercise: str = "barbell_bench_press"
 ) -> pd.DataFrame:
-    """."""
+    """Return one consolidated Pandas dataframe containing workout date and training data
+    for specified split(s) and exercise
+    """
     frames = []
     for item in log:
         if any(x in item["split"] for x in splits):
