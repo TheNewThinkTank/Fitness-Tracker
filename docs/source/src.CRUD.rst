@@ -1,21 +1,21 @@
-CRUD package
-============
+src.CRUD package
+================
 
 Submodules
 ----------
 
-CRUD.insert module
-------------------
+src.CRUD.insert module
+----------------------
 
-.. automodule:: CRUD.insert
+.. automodule:: src.CRUD.insert
    :members:
    :undoc-members:
    :show-inheritance:
 
-CRUD.training module
---------------------
+src.CRUD.training module
+------------------------
 
-.. automodule:: CRUD.training
+.. automodule:: src.CRUD.training
    :members:
    :undoc-members:
    :show-inheritance:
@@ -23,7 +23,7 @@ CRUD.training module
 Module contents
 ---------------
 
-.. automodule:: CRUD
+.. automodule:: src.CRUD
    :members:
    :undoc-members:
    :show-inheritance:

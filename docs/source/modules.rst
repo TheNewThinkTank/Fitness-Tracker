@@ -1,7 +1,7 @@
-CRUD
-====
+src
+===
 
 .. toctree::
    :maxdepth: 4
 
-   CRUD
+   src
