@@ -1,4 +1,7 @@
-"""_summary_
+"""
+Date: 2022-05-02
+Author: Gustav Collin Rasmussen
+Purpose: Get all exercises available for a given musclegroup
 """
 
 import json
@@ -8,7 +11,7 @@ import yaml  # type: ignore
 
 
 def get_available_exercises(training_catalogue: str, split: str) -> Dict:
-    """Fetch musclegroup-exercises catalogue
+    """Fetch musclegroup-exercises catalogue.
 
     :param training_catalogue: Exercises available for each musclegroup
     :type training_catalogue: String
