@@ -37,8 +37,10 @@ def create_plots(datatype: str, x: list, y: list, exercise: str) -> None:
         ax.set_title(f"{exercise}")
     else:
         # ax = sns.regplot(x=x, y=y, ci=68, truncate=False)
-        ax = sns.regplot(x=x_prg1, y=y_prg1, ci=68, truncate=False, label="Program_1")
-        sns.regplot(x=x_prg2, y=y_prg2, ci=68, truncate=True, label="Program_2")
+        ax = sns.regplot(
+            x=x_prg1, y=y_prg1, ci=68, truncate=False, label="Program 1: 4-split"
+        )
+        sns.regplot(x=x_prg2, y=y_prg2, ci=68, truncate=True, label="Program 2: PPL")
         ax.set_title(f"{exercise}", fontsize=30)
 
     xticks = ax.get_xticks()

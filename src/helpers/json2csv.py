@@ -1,8 +1,9 @@
 """
 Date: 2022-02-21
 Author: Gustav Collin Rasmussen
+
 Purpose: flatten nested JSON data into csv format,
-  for the great expectations framework to process.
+for the great expectations framework to process.
 """
 
 import json
@@ -11,7 +12,8 @@ import pandas as pd  # type: ignore
 
 def json2csv(infile) -> None:
     """Read nested JSON file, flatten it, apply additional transformations,
-    and write results to csv format"""
+    and write results to csv format
+    """
 
     with open(infile, "r") as rf:
         json_dict = json.load(rf)
