@@ -15,18 +15,26 @@ def get_dates_and_muscle_groups(table) -> Dict:
 
     :param table: A TinyDB table
     :type table: TinyDB table
-    :return: A dictionary of workout dates and corresponding splits / musclegrous
+    :return: A dictionary of workout dates and corresponding splits / musclegroup
     :rtype: Dictionary
     """
     return {item["date"]: item["split"] for item in table}
 
 
-def show_exercises(log, date):
-    """Show all exercises for given workout date"""
+def show_exercises(table, date: str) -> List:
+    """Show all exercises for given workout date
+
+    :param table: A TinyDB table
+    :type table: TinyDB table
+    :param date: Date of a given workout
+    :type date: String
+    :return: A list of exercises performed on a given date
+    :rtype: List
+    """
 
     all_exercises_during_workout = []
 
-    for item in log:
+    for item in table:
         if item["date"] == date:
             for k, _ in item["exercises"].items():
                 all_exercises_during_workout.append(k)
