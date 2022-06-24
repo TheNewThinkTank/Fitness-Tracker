@@ -4,6 +4,8 @@ Full stack fitness tracking application using TinyDB and FastAPI.
 Add weight-training logs continuously to db.json and query the data through the browser.
 Visually inspect your progression through dates and exercises
 
+[![Documentation Status](https://readthedocs.org/projects/fitness-tracker/badge/?version=latest)](https://fitness-tracker.readthedocs.io/en/latest/?badge=latest)
+
 ![fitness-tracker-wf](https://github.com/TheNewThinkTank/Fitness-Tracker/actions/workflows/fitness-tracker-wf.yml/badge.svg)
 
 ![simulation-wf](https://github.com/TheNewThinkTank/Fitness-Tracker/actions/workflows/simulation-wf.yml/badge.svg)
