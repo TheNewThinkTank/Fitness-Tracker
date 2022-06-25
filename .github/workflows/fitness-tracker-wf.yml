@@ -55,7 +55,7 @@ jobs:
 
       - name: Static type checks with mypy
         run: |
-          mypy src/
+          poetry run mypy src/
 
       - name: Run ShellCheck
         uses: ludeeus/action-shellcheck@master
@@ -86,7 +86,7 @@ jobs:
 
       - name: Run pytest
         run: |
-          pytest test/test_model.py
+          poetry run pytest test/test_model.py
 
       # - name: Run test suite
       #   run: |
@@ -94,7 +94,7 @@ jobs:
       #     pipenv run test -k "test_training and not test_simulation"
 
       - name: BDD with Behave
-        run: behave
+        run: poetry run behave
 
       # docs:
       #   runs-on: ubuntu-latest
