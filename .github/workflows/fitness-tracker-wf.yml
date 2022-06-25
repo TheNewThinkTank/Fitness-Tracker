@@ -45,9 +45,13 @@ jobs:
           poetry install
         # pip install flake8 mypy pytest pandas tinydb behave  # yamllint
 
+      - name: Check poetry version
+        run: |
+          poetry --version
+
       - name: Lint with flake8
         run: |
-          flake8 --ignore=E402,E501 .
+          poetry run flake8 --ignore=E402,E501 .
 
       - name: Static type checks with mypy
         run: |
