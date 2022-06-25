@@ -40,7 +40,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          pip install flake8 mypy pytest pandas tinydb # yamllint
+          pip install flake8 mypy pytest pandas tinydb behave  # yamllint
 
       - name: Lint with flake8
         run: |
@@ -86,7 +86,8 @@ jobs:
       #     pipenv run test -v
       #     pipenv run test -k "test_training and not test_simulation"
 
-      # TODO: enable testing with Behave
+      - name: BDD with Behave
+        run: behave
 
       # docs:
       #   runs-on: ubuntu-latest
