@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - main
-      - feature/models
+      # - feature/models
 
 jobs:
   Run-Linting-And-Unit-Tests:
@@ -28,19 +28,17 @@ jobs:
       #   with:
       #     path: ~/.local/share/virtualenvs
       #     key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
-
       # - name: Install dependencies
       #   if: steps.cache-pipenv.outputs.cache-hit != 'true'
       #   run: |
       #     pipenv install --deploy --dev
-
       # - name: install numpy
       #   run: |
       #     pip install numpy
-
       - name: Install Dependencies
         run: |
-          pip install flake8 mypy pytest pandas tinydb behave  # yamllint
+          poetry install
+        # pip install flake8 mypy pytest pandas tinydb behave  # yamllint
 
       - name: Lint with flake8
         run: |
