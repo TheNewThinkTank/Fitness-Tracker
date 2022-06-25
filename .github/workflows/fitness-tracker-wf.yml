@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - main
-      # - feature/models
 
 jobs:
   Run-Linting-And-Unit-Tests:
@@ -14,27 +13,10 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
 
-      # Setup Python (faster than using Python container)
-      - name: Setup Python
+      - name: Setup Python # (faster than using Python container)
         uses: actions/setup-python@v2
         with:
           python-version: "3.10"
-
-      # - name: Install pipenv
-      #   run: |
-      #     python -m pip install --upgrade pipenv wheel
-      # - id: cache-pipenv
-      #   uses: actions/cache@v1
-      #   with:
-      #     path: ~/.local/share/virtualenvs
-      #     key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
-      # - name: Install dependencies
-      #   if: steps.cache-pipenv.outputs.cache-hit != 'true'
-      #   run: |
-      #     pipenv install --deploy --dev
-      # - name: install numpy
-      #   run: |
-      #     pip install numpy
 
       - name: Install poetry
         run: |
@@ -59,51 +41,14 @@ jobs:
       - name: Run ShellCheck
         uses: ludeeus/action-shellcheck@master
 
-      # - name: yamllint
-      #   run: |
-      #     yamllint .
-
       - name: yamllint workout_programs
         uses: karancode/yamllint-github-action@master
         with:
           yamllint_file_or_dir: "./workout_programs.yml"
 
-      # - name: yamllint .github/workflows/fitness-tracker-wf.yml
-      #   uses: karancode/yamllint-github-action@master
-      #   with:
-      #     yamllint_file_or_dir: "./.github/workflows/fitness-tracker-wf.yml"
-
-      # - name: yamllint .github/workflows/simulation-wf.yml
-      #   uses: karancode/yamllint-github-action@master
-      #   with:
-      #     yamllint_file_or_dir: "./.github/workflows/simulation-wf.yml"
-
-      # - name: yamllint .github/workflows/test-wf.yml
-      #   uses: karancode/yamllint-github-action@master
-      #   with:
-      #     yamllint_file_or_dir: "./.github/workflows/test-wf.yml"
-
       - name: Run pytest
         run: |
           poetry run pytest test/test_model.py
 
-      # - name: Run test suite
-      #   run: |
-      #     pipenv run test -v
-      #     pipenv run test -k "test_training and not test_simulation"
-
       - name: BDD with Behave
         run: poetry run behave
-
-      # docs:
-      #   runs-on: ubuntu-latest
-      #   steps:
-      #     - uses: actions/checkout@v2
-      #     # - uses: ammaraskar/sphinx-action@master
-      #     #   with:
-      #     #     docs-folder: "docs/"
-      #     - uses: ammaraskar/sphinx-problem-matcher@master
-      #     - name: Build Sphinx docs
-      #       run: |
-      #         make dirhtml
-      #         sed -i 's/url_root="#"/url_root=""/' _build/dirhtml/index.html || true
