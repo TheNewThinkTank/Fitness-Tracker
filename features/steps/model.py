@@ -8,7 +8,7 @@ import os
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(SCRIPT_DIR))
 
-from src.model.model import get_data, get_df, one_rep_max_estimator
+from src.model.model import get_df  # get_data, one_rep_max_estimator
 
 from tinydb import TinyDB
 
