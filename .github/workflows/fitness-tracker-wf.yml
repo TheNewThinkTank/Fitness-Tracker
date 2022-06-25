@@ -86,6 +86,8 @@ jobs:
       #     pipenv run test -v
       #     pipenv run test -k "test_training and not test_simulation"
 
+      # TODO: enable testing with Behave
+
       # docs:
       #   runs-on: ubuntu-latest
       #   steps:
