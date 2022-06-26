@@ -23,20 +23,17 @@ jobs:
           curl -sSL https://install.python-poetry.org | python3 -
 
       - name: Install Dependencies
-        run: |
-          poetry install
+        run: poetry install
 
       - name: Check poetry version
-        run: |
-          poetry --version
+        run: poetry --version
 
       - name: Lint with flake8
         run: |
           poetry run flake8 --ignore=E402,E501 .
 
       - name: Static type checks with mypy
-        run: |
-          poetry run mypy src/
+        run: poetry run mypy src/
 
       - name: Run ShellCheck
         uses: ludeeus/action-shellcheck@master
@@ -47,8 +44,7 @@ jobs:
           yamllint_file_or_dir: "./workout_programs.yml"
 
       - name: Run pytest
-        run: |
-          poetry run pytest test/test_model.py
+        run: poetry run pytest test/test_model.py
 
       - name: BDD with Behave
         run: poetry run behave
