@@ -1,6 +1,7 @@
 ---
 programs:
   program_1:
+    name: "4-SPLIT"
     splits: [legs, chest, back_and_biceps, shoulder_and_abs]
     description: |
       Focus on strength.
@@ -12,17 +13,19 @@ programs:
     number_of_workouts: 40
 
   program_2:
+    name: "PPL"
     splits: [push, pull, legs]
     description: |
       Focus on strength.
       Heavy sets of 2-8 reps for key exercises
       (deadlift, squat, benchpress, seated_row)
     start: 2022-03-26
-    end: 2022-MM-DD
+    end: 2022-06-27
     program_iterations: 10
     number_of_workouts: 30
 
   program_3:
+    name: "GVT"
     splits: [back_and_chest, legs, shoulders_and_arms]
     description: |
       German volume training.
