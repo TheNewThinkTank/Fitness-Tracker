@@ -13,7 +13,7 @@ visit URL: http://127.0.0.1:8000/docs
 
 from fastapi import FastAPI  # type: ignore
 
-import uvicorn
+import uvicorn  # type: ignore
 import json
 from tinydb import TinyDB  # type: ignore
 
