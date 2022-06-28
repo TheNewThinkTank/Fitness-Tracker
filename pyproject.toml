@@ -16,6 +16,7 @@ yamllint = "^1.26.3"
 pytest = "^7.1.2"
 flake8 = "^4.0.1"
 Sphinx = "^5.0.2"
+uvicorn = "^0.18.2"
 
 [tool.poetry.dev-dependencies]
 
