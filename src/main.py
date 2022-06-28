@@ -12,6 +12,8 @@ visit URL: http://127.0.0.1:8000/docs
 """
 
 from fastapi import FastAPI  # type: ignore
+
+import uvicorn
 import json
 from tinydb import TinyDB  # type: ignore
 
@@ -21,17 +23,22 @@ app = FastAPI()
 
 datatype = "real"
 
-data = json.load(open(file="../config.json", encoding="utf-8"))
+data = json.load(open(file="./config.json", encoding="utf-8"))
 db = (
-    TinyDB("../" + data["real_workout_database"])
+    TinyDB("./" + data["real_workout_database"])
     if datatype == "real"
-    else TinyDB("../" + data["simulated_workout_database"])
+    else TinyDB("./" + data["simulated_workout_database"])
 )
 table = (
-    db.table("../" + data["real_weight_table"])
+    db.table("./" + data["real_weight_table"])
     if datatype == "real"
-    else db.table("../" + data["simulated_weight_table"])
+    else db.table("./" + data["simulated_weight_table"])
 )
+
+
+@app.get("/")
+async def main_page():
+    return "hello, athlete. Welcome to your tracker!"
 
 
 @app.get("/dates/{date}")
@@ -42,3 +49,7 @@ async def get_workout_description(date: str):
 @app.get("/{date}/exercises/{exercise}")
 async def get_exercise_info(exercise: str, date: str):
     return show_exercise(table, exercise, date)
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, port=8000, host="0.0.0.0")
