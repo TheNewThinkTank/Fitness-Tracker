@@ -12,7 +12,7 @@ import pathlib
 
 from tinydb import TinyDB  # type: ignore
 
-from src.helpers.lookup import Months, get_year_and_month
+from src.helpers.lookup import get_year_and_month
 
 
 def insert_log(table, log_path) -> None:
