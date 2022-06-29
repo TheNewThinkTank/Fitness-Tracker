@@ -21,9 +21,12 @@ from CRUD.training import describe_workout, show_exercise  # type: ignore
 
 app = FastAPI()
 
-datatype = "real"
-
 data = json.load(open(file="./config.json", encoding="utf-8"))
+db = TinyDB(data["real_workout_database"])
+table = db.table(data["real_weight_table"])
+
+"""
+datatype = "real"
 db = (
     TinyDB(data["real_workout_database"])
     if datatype == "real"
@@ -34,6 +37,7 @@ table = (
     if datatype == "real"
     else db.table(data["simulated_weight_table"])
 )
+"""
 
 
 @app.get("/")
