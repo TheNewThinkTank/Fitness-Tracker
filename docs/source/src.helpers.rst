@@ -28,6 +28,14 @@ src.helpers.json2csv module
    :undoc-members:
    :show-inheritance:
 
+src.helpers.lookup module
+-------------------------
+
+.. automodule:: src.helpers.lookup
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

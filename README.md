@@ -41,9 +41,15 @@ and last leg workout of program 2 for three selected exercises.<br>
 - Catalogue of musclegroups, corresponding exercises and suggested weight ranges (for simulations)
 
 <!--
-Run FastAPI app with Docker from CLI:
+## Run FastAPI app with Docker from CLI:
 `docker build -t ftimage .`
 `docker run -p 8000:8000 --name ftcontainer ftimage`
+
+## Update docs:
+cd docs
+make clean
+sphinx-apidoc -o ./source ../src
+make html
 
 ## Upcoming features
 - deploy and host containerized app on Raspberry Pi

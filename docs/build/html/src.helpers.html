@@ -107,7 +107,7 @@
                       <li class="toctree-l3">
                         <a
                           class="reference internal"
-                          href="src.html#module-src.main"
+                          href="src.html#src-main-module"
                           >src.main module</a
                         >
                       </li>
@@ -296,7 +296,10 @@
                         ></a
                       >
                     </h2>
-                    <p>_summary_</p>
+                    <p>
+                      Date: 2022-05-02 Author: Gustav Collin Rasmussen Purpose:
+                      Get all exercises available for a given musclegroup
+                    </p>
                     <dl class="py function">
                       <dt
                         class="sig sig-object py"
@@ -341,7 +344,7 @@
                         >
                       </dt>
                       <dd>
-                        <p>Fetch musclegroup-exercises catalogue</p>
+                        <p>Fetch musclegroup-exercises catalogue.</p>
                         <dl class="field-list simple">
                           <dt class="field-odd">Parameters</dt>
                           <dd class="field-odd">
@@ -470,6 +473,347 @@
                           Convert all JSON files inside nested folders to CSV
                         </p>
                       </dd>
+                    </dl>
+                  </section>
+                  <section id="module-src.helpers.lookup">
+                    <span id="src-helpers-lookup-module"></span>
+                    <h2>
+                      src.helpers.lookup module<a
+                        class="headerlink"
+                        href="#module-src.helpers.lookup"
+                        title="Permalink to this headline"
+                        ></a
+                      >
+                    </h2>
+                    <p>
+                      Convert month names from strings to integer
+                      representations
+                    </p>
+                    <dl class="py class">
+                      <dt
+                        class="sig sig-object py"
+                        id="src.helpers.lookup.Months"
+                      >
+                        <em class="property"
+                          ><span class="pre">class</span
+                          ><span class="w"> </span></em
+                        ><span class="sig-prename descclassname"
+                          ><span class="pre">src.helpers.lookup.</span></span
+                        ><span class="sig-name descname"
+                          ><span class="pre">Months</span></span
+                        ><span class="sig-paren">(</span
+                        ><em class="sig-param"
+                          ><span class="n"
+                            ><span class="pre">value</span></span
+                          ></em
+                        ><span class="sig-paren">)</span
+                        ><a
+                          class="headerlink"
+                          href="#src.helpers.lookup.Months"
+                          title="Permalink to this definition"
+                          ></a
+                        >
+                      </dt>
+                      <dd>
+                        <p>
+                          Bases:
+                          <code
+                            class="xref py py-class docutils literal notranslate"
+                            ><span class="pre">enum.Enum</span></code
+                          >
+                        </p>
+                        <p>An enumeration.</p>
+                        <dl class="py attribute">
+                          <dt
+                            class="sig sig-object py"
+                            id="src.helpers.lookup.Months.APRIL"
+                          >
+                            <span class="sig-name descname"
+                              ><span class="pre">APRIL</span></span
+                            ><em class="property"
+                              ><span class="w"> </span
+                              ><span class="p"><span class="pre">=</span></span
+                              ><span class="w"> </span
+                              ><span class="pre">4</span></em
+                            ><a
+                              class="headerlink"
+                              href="#src.helpers.lookup.Months.APRIL"
+                              title="Permalink to this definition"
+                              ></a
+                            >
+                          </dt>
+                          <dd></dd>
+                        </dl>
+
+                        <dl class="py attribute">
+                          <dt
+                            class="sig sig-object py"
+                            id="src.helpers.lookup.Months.AUGUST"
+                          >
+                            <span class="sig-name descname"
+                              ><span class="pre">AUGUST</span></span
+                            ><em class="property"
+                              ><span class="w"> </span
+                              ><span class="p"><span class="pre">=</span></span
+                              ><span class="w"> </span
+                              ><span class="pre">8</span></em
+                            ><a
+                              class="headerlink"
+                              href="#src.helpers.lookup.Months.AUGUST"
+                              title="Permalink to this definition"
+                              ></a
+                            >
+                          </dt>
+                          <dd></dd>
+                        </dl>
+
+                        <dl class="py attribute">
+                          <dt
+                            class="sig sig-object py"
+                            id="src.helpers.lookup.Months.DECEMBER"
+                          >
+                            <span class="sig-name descname"
+                              ><span class="pre">DECEMBER</span></span
+                            ><em class="property"
+                              ><span class="w"> </span
+                              ><span class="p"><span class="pre">=</span></span
+                              ><span class="w"> </span
+                              ><span class="pre">12</span></em
+                            ><a
+                              class="headerlink"
+                              href="#src.helpers.lookup.Months.DECEMBER"
+                              title="Permalink to this definition"
+                              ></a
+                            >
+                          </dt>
+                          <dd></dd>
+                        </dl>
+
+                        <dl class="py attribute">
+                          <dt
+                            class="sig sig-object py"
+                            id="src.helpers.lookup.Months.FEBRUARY"
+                          >
+                            <span class="sig-name descname"
+                              ><span class="pre">FEBRUARY</span></span
+                            ><em class="property"
+                              ><span class="w"> </span
+                              ><span class="p"><span class="pre">=</span></span
+                              ><span class="w"> </span
+                              ><span class="pre">2</span></em
+                            ><a
+                              class="headerlink"
+                              href="#src.helpers.lookup.Months.FEBRUARY"
+                              title="Permalink to this definition"
+                              ></a
+                            >
+                          </dt>
+                          <dd></dd>
+                        </dl>
+
+                        <dl class="py attribute">
+                          <dt
+                            class="sig sig-object py"
+                            id="src.helpers.lookup.Months.JANUARY"
+                          >
+                            <span class="sig-name descname"
+                              ><span class="pre">JANUARY</span></span
+                            ><em class="property"
+                              ><span class="w"> </span
+                              ><span class="p"><span class="pre">=</span></span
+                              ><span class="w"> </span
+                              ><span class="pre">1</span></em
+                            ><a
+                              class="headerlink"
+                              href="#src.helpers.lookup.Months.JANUARY"
+                              title="Permalink to this definition"
+                              ></a
+                            >
+                          </dt>
+                          <dd></dd>
+                        </dl>
+
+                        <dl class="py attribute">
+                          <dt
+                            class="sig sig-object py"
+                            id="src.helpers.lookup.Months.JULY"
+                          >
+                            <span class="sig-name descname"
+                              ><span class="pre">JULY</span></span
+                            ><em class="property"
+                              ><span class="w"> </span
+                              ><span class="p"><span class="pre">=</span></span
+                              ><span class="w"> </span
+                              ><span class="pre">7</span></em
+                            ><a
+                              class="headerlink"
+                              href="#src.helpers.lookup.Months.JULY"
+                              title="Permalink to this definition"
+                              ></a
+                            >
+                          </dt>
+                          <dd></dd>
+                        </dl>
+
+                        <dl class="py attribute">
+                          <dt
+                            class="sig sig-object py"
+                            id="src.helpers.lookup.Months.JUNE"
+                          >
+                            <span class="sig-name descname"
+                              ><span class="pre">JUNE</span></span
+                            ><em class="property"
+                              ><span class="w"> </span
+                              ><span class="p"><span class="pre">=</span></span
+                              ><span class="w"> </span
+                              ><span class="pre">6</span></em
+                            ><a
+                              class="headerlink"
+                              href="#src.helpers.lookup.Months.JUNE"
+                              title="Permalink to this definition"
+                              ></a
+                            >
+                          </dt>
+                          <dd></dd>
+                        </dl>
+
+                        <dl class="py attribute">
+                          <dt
+                            class="sig sig-object py"
+                            id="src.helpers.lookup.Months.MARCH"
+                          >
+                            <span class="sig-name descname"
+                              ><span class="pre">MARCH</span></span
+                            ><em class="property"
+                              ><span class="w"> </span
+                              ><span class="p"><span class="pre">=</span></span
+                              ><span class="w"> </span
+                              ><span class="pre">3</span></em
+                            ><a
+                              class="headerlink"
+                              href="#src.helpers.lookup.Months.MARCH"
+                              title="Permalink to this definition"
+                              ></a
+                            >
+                          </dt>
+                          <dd></dd>
+                        </dl>
+
+                        <dl class="py attribute">
+                          <dt
+                            class="sig sig-object py"
+                            id="src.helpers.lookup.Months.MAY"
+                          >
+                            <span class="sig-name descname"
+                              ><span class="pre">MAY</span></span
+                            ><em class="property"
+                              ><span class="w"> </span
+                              ><span class="p"><span class="pre">=</span></span
+                              ><span class="w"> </span
+                              ><span class="pre">5</span></em
+                            ><a
+                              class="headerlink"
+                              href="#src.helpers.lookup.Months.MAY"
+                              title="Permalink to this definition"
+                              ></a
+                            >
+                          </dt>
+                          <dd></dd>
+                        </dl>
+
+                        <dl class="py attribute">
+                          <dt
+                            class="sig sig-object py"
+                            id="src.helpers.lookup.Months.NOVEMBER"
+                          >
+                            <span class="sig-name descname"
+                              ><span class="pre">NOVEMBER</span></span
+                            ><em class="property"
+                              ><span class="w"> </span
+                              ><span class="p"><span class="pre">=</span></span
+                              ><span class="w"> </span
+                              ><span class="pre">11</span></em
+                            ><a
+                              class="headerlink"
+                              href="#src.helpers.lookup.Months.NOVEMBER"
+                              title="Permalink to this definition"
+                              ></a
+                            >
+                          </dt>
+                          <dd></dd>
+                        </dl>
+
+                        <dl class="py attribute">
+                          <dt
+                            class="sig sig-object py"
+                            id="src.helpers.lookup.Months.OCTOBER"
+                          >
+                            <span class="sig-name descname"
+                              ><span class="pre">OCTOBER</span></span
+                            ><em class="property"
+                              ><span class="w"> </span
+                              ><span class="p"><span class="pre">=</span></span
+                              ><span class="w"> </span
+                              ><span class="pre">10</span></em
+                            ><a
+                              class="headerlink"
+                              href="#src.helpers.lookup.Months.OCTOBER"
+                              title="Permalink to this definition"
+                              ></a
+                            >
+                          </dt>
+                          <dd></dd>
+                        </dl>
+
+                        <dl class="py attribute">
+                          <dt
+                            class="sig sig-object py"
+                            id="src.helpers.lookup.Months.SEPTEMBER"
+                          >
+                            <span class="sig-name descname"
+                              ><span class="pre">SEPTEMBER</span></span
+                            ><em class="property"
+                              ><span class="w"> </span
+                              ><span class="p"><span class="pre">=</span></span
+                              ><span class="w"> </span
+                              ><span class="pre">9</span></em
+                            ><a
+                              class="headerlink"
+                              href="#src.helpers.lookup.Months.SEPTEMBER"
+                              title="Permalink to this definition"
+                              ></a
+                            >
+                          </dt>
+                          <dd></dd>
+                        </dl>
+                      </dd>
+                    </dl>
+
+                    <dl class="py function">
+                      <dt
+                        class="sig sig-object py"
+                        id="src.helpers.lookup.get_year_and_month"
+                      >
+                        <span class="sig-prename descclassname"
+                          ><span class="pre">src.helpers.lookup.</span></span
+                        ><span class="sig-name descname"
+                          ><span class="pre">get_year_and_month</span></span
+                        ><span class="sig-paren">(</span
+                        ><em class="sig-param"
+                          ><span class="n"><span class="pre">date</span></span
+                          ><span class="o"><span class="pre">=</span></span
+                          ><span class="default_value"
+                            ><span class="pre">'2022-06-27'</span></span
+                          ></em
+                        ><span class="sig-paren">)</span
+                        ><a
+                          class="headerlink"
+                          href="#src.helpers.lookup.get_year_and_month"
+                          title="Permalink to this definition"
+                          ></a
+                        >
+                      </dt>
+                      <dd><p>_summary_</p></dd>
                     </dl>
                   </section>
                   <section id="module-src.helpers">
