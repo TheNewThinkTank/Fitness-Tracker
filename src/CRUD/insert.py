@@ -12,6 +12,8 @@ import pathlib
 
 from tinydb import TinyDB  # type: ignore
 
+from src.helpers.lookup import Months, get_year_and_month
+
 
 def insert_log(table, log_path) -> None:
     """Store training log: log_path in database table.
@@ -56,23 +58,8 @@ def insert_specific_log(date, table, workout_number=1) -> None:
     :type workout_number: int, optional
     """
 
-    months = {
-        "01": "January",
-        "02": "February",
-        "03": "March",
-        "04": "April",
-        "05": "May",
-        "06": "June",
-        "07": "July",
-        "08": "August",
-        "09": "September",
-        "10": "October",
-        "11": "November",
-        "12": "December",
-    }
+    YEAR, MONTH = get_year_and_month(date)
 
-    YEAR = date[:4]
-    MONTH = months[date[5:7]]
     if workout_number == 1:
         log_path = glob.glob(
             f"data/log_archive/JSON/{YEAR}/{MONTH}/*training_log_{date}.json"
