@@ -50,6 +50,7 @@ jobs:
         run: poetry run behave
 
   Deploy-to-AWS-ECR:
+    needs: Run-Linting-And-Unit-Tests
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
