@@ -49,7 +49,7 @@ jobs:
       - name: BDD with Behave
         run: poetry run behave
 
-  Deploy to AWS ECR:
+  Deploy-to-AWS-ECR:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
