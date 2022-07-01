@@ -33,7 +33,7 @@ programs:
       10 Moderate sets of 10 reps for key exercises (supersets).
       (deadlift, squat, benchpress, seated_row)
       with 90 seconds rest between sets.
-    start: 2022-MM-DD
+    start: 2022-07-01
     end: 2022-MM-DD
     program_iterations: 10
     number_of_workouts: 30
