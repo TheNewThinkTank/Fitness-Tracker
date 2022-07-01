@@ -10,9 +10,14 @@ import json
 import os
 import pathlib
 
+import sys
+
 from tinydb import TinyDB  # type: ignore
 
-from src.helpers.lookup import get_year_and_month
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.dirname(SCRIPT_DIR))
+
+from helpers import lookup
 
 
 def insert_log(table, log_path) -> None:
@@ -58,7 +63,7 @@ def insert_specific_log(date, table, workout_number=1) -> None:
     :type workout_number: int, optional
     """
 
-    YEAR, MONTH = get_year_and_month(date)
+    YEAR, MONTH = lookup.get_year_and_month(date)  # get_year_and_month(date)
     base_path = f"data/log_archive/JSON/{YEAR}/{MONTH}/*training_log_{date}"
 
     if workout_number > 1:
