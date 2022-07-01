@@ -1,5 +1,35 @@
-04-24 17:48 root         INFO     Running Fitness-Tracker/src/model/model.py ...
-04-24 17:48 model.area1  INFO     data_model: real
-04-24 17:48 model.area1  DEBUG    db: <TinyDB tables=['weight_training_log', 'disciplines_log'], tables_count=2, default_table_documents_count=0, all_tables_documents_count=['weight_training_log=51', 'disciplines_log=14']>
-04-24 17:48 model.area1  DEBUG    table: <Table name='weight_training_log', total=51, storage=<tinydb.storages.JSONStorage object at 0x10dd4f370>>
-04-24 17:48 model.area2  INFO     x, y: [1639350000.0, 1640473200.0, 1641164400.0, 1642287600.0, 1643410800.0, 1644274800.0, 1644879600.0, 1645916400.0, 1646607600.0, 1647298800.0, 1648249200.0, 1648850400.0, 1649800800.0, 1650405600.0], [85.71, 80.0, 82.05, 84.21, 84.21, 84.21, 84.21, 84.21, 88.89, 84.21, 100.0, 88.89, 88.89, 94.12]
+07-01 22:56 root         INFO     Running Fitness-Tracker/src/model/model.py ...
+07-01 22:56 model.area1  INFO     data_model: real
+07-01 22:56 model.area1  DEBUG    db: <TinyDB tables=['weight_training_log', 'disciplines_log'], tables_count=2, default_table_documents_count=0, all_tables_documents_count=['weight_training_log=71', 'disciplines_log=14']>
+07-01 22:56 model.area1  DEBUG    table: <Table name='weight_training_log', total=71, storage=<tinydb.storages.JSONStorage object at 0x10d2580d0>>
+07-01 22:56 model.area2  INFO     df_1rm.head():                   1RM
+date
+2021-12-13  85.714286
+2021-12-26  80.000000
+2022-01-03  82.051282
+2022-01-16  84.210526
+2022-01-29  84.210526
+07-01 22:56 model.area2  INFO     df_volume:             volume
+date
+2021-12-13  2520.0
+2021-12-26  1680.0
+2022-01-03  1600.0
+2022-01-16  3200.0
+2022-01-29  2560.0
+2022-02-08  1600.0
+2022-02-15  2560.0
+2022-02-27  2560.0
+2022-03-07  2560.0
+2022-03-15  3200.0
+2022-03-26  2400.0
+2022-04-02  2400.0
+2022-04-13  2400.0
+2022-04-20  2160.0
+2022-04-30  2400.0
+2022-05-08  2400.0
+2022-05-16  2400.0
+2022-05-21  1920.0
+2022-05-29  1920.0
+2022-06-18  1440.0
+2022-07-01  4000.0
+07-01 22:56 model.area2  INFO     x, y: [1639350000.0, 1640473200.0, 1641164400.0, 1642287600.0, 1643410800.0, 1644274800.0, 1644879600.0, 1645916400.0, 1646607600.0, 1647298800.0, 1648249200.0, 1648850400.0, 1649800800.0, 1650405600.0, 1651269600.0, 1651960800.0, 1652652000.0, 1653084000.0, 1653775200.0, 1655503200.0, 1656626400.0], [85.71, 80.0, 82.05, 84.21, 84.21, 84.21, 84.21, 84.21, 88.89, 84.21, 100.0, 88.89, 88.89, 94.12, 94.12, 94.12, 94.12, 94.12, 88.89, 88.89, 53.33]

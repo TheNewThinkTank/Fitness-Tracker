@@ -17,10 +17,21 @@ from tinydb import TinyDB  # type: ignore
 
 
 def get_df(
-    log, splits: list = ["chest", "push"], exercise: str = "barbell_bench_press"
+    log,
+    splits: list = ["chest", "push", "chest_and_back"],
+    exercise: str = "barbell_bench_press",
 ) -> pd.DataFrame:
     """Return one consolidated Pandas dataframe containing workout date and training data
     for specified split(s) and exercise
+
+    :param log: _description_
+    :type log: _type_
+    :param splits: _description_, defaults to ["chest", "push", "chest_and_back"]
+    :type splits: list, optional
+    :param exercise: _description_, defaults to "barbell_bench_press"
+    :type exercise: str, optional
+    :return: _description_
+    :rtype: pd.DataFrame
     """
     frames = []
     for item in log:
@@ -32,26 +43,68 @@ def get_df(
     return pd.concat(frames)
 
 
+def calc_volume(df: pd.DataFrame) -> pd.DataFrame:
+    """sets times reps times load
+
+    :param df: _description_
+    :type df: pd.DataFrame
+    :return: _description_
+    :rtype: pd.DataFrame
+    """
+
+    df_copy = df.copy()
+    num_of_sets_df = df_copy.groupby("date")[["set no."]].agg("max")
+    reps_df = df_copy.groupby("date")[["reps"]].agg("max")
+    df_copy["weight"] = df_copy["weight"].str.strip(" kg").astype(float)
+    weight_df = df_copy.groupby("date")[["weight"]].agg("max")
+    df_res = pd.concat([num_of_sets_df, reps_df, weight_df], axis=1)
+    df_res["volume"] = df_res["set no."] * df_res["reps"] * df_res["weight"]
+
+    return df_res.drop(["set no.", "reps", "weight"], axis=1)
+
+
 def one_rep_max_estimator(df) -> pd.DataFrame:
     """The ACSM (American College of Sports Medicine) protocol
     is used to implement the 1RM estimation
+
+    :param df: _description_
+    :type df: pd.DataFrame
+    :return: _description_
+    :rtype: pd.DataFrame
     """
-    df["1RM"] = df["weight"].str.strip(" kg").astype(float) / (
+
+    df_copy = df.copy()
+
+    df_copy["1RM"] = df["weight"].str.strip(" kg").astype(float) / (
         (100 - df["reps"] * 2.5) / 100
     )
-    return df.groupby("date")[["1RM"]].agg("max")
+    return df_copy.groupby("date")[["1RM"]].agg("max")
 
 
-def get_data(df) -> Tuple[List[float], List[float]]:
+def get_data(df, y_col="1RM") -> Tuple[List[float], List[float]]:
+    """Get workout-timestamps and 1RM estimates
+
+    :param df: Pandas dataframe with workout-timestamps
+        and either 1RM estimates or volume
+    :type df: pd.DataFrame
+    :param y_col: String signifying whether to use 1RM estimates or volume
+    :type y_col: str
+    :return: workout-timestamps and either 1RM estimates or volume
+    :rtype: Tuple[List[float], List[float]]
     """
-    date_strs: workout-dates
-    x: timestamps
-    y: max 1RM estimate in kg
-    """
-    date_strs = df.index.tolist()
+
+    date_strs = df.index.tolist()  # workout-dates
     x = [datetime.fromisoformat(i).timestamp() for i in date_strs]
-    y = df["1RM"].tolist()
-    y = [float("{:.2f}".format(x)) for x in y]
+
+    match y_col:
+        case "1RM":
+            y = df["1RM"].tolist()  # max 1RM estimate in kg
+            y = [float("{:.2f}".format(x)) for x in y]
+        case "volume":
+            y = df["volume"].tolist()  # volume in kg
+        case _:
+            raise ValueError
+
     return x, y
 
 
@@ -97,9 +150,14 @@ def main():
     logger1.debug("table: %s", table)
 
     df = get_df(table)
+    df_volume = calc_volume(df)
     df_1rm = one_rep_max_estimator(df)
     x, y = get_data(df_1rm)
+    # x, y = get_data(df_volume, y_col="volume")
 
+    # logger2.info("df.head(): %s", df.head())
+    logger2.info("df_1rm.head(): %s", df_1rm.head())
+    logger2.info("df_volume: %s", df_volume)
     logger2.info("x, y: %s, %s", x, y)
 
 
