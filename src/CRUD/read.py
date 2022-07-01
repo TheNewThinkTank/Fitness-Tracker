@@ -83,21 +83,6 @@ def analyze_workout(table, exercise: str) -> List:
     return [d["exercises"][exercise] for d in data]
 
 
-def cleanup(db, log, action) -> None:
-    """Update, remove or truncate database"""
-
-    # TODO: implement update and remove actions
-    # if action == "update":
-    #     log.update({"count": 10}, Fruit.type == "apple")
-
-    # if action == "remove":
-    #     log.remove(exercises.squat < 5)
-
-    if action == "truncate":
-        log.truncate()
-        assert log.all() == []
-
-
 def main():
     datamodels = ["real", "simulated"]
     datatype = datamodels[0]
@@ -120,7 +105,6 @@ def main():
     # print(describe_workout(table, "2021-12-13"))
     # show_exercise(table, "squat", "2021-12-11")
     print(analyze_workout(table, "squat"))
-    # cleanup(db, table, action="truncate")
 
 
 if __name__ == "__main__":

@@ -11,12 +11,20 @@ import pandas as pd  # type: ignore
 import seaborn as sns  # type: ignore
 from tinydb import TinyDB  # type: ignore
 
-from CRUD.training import show_exercise  # type: ignore
+from CRUD.read import show_exercise  # type: ignore
 from helpers.get_exercises import get_available_exercises  # type: ignore
 
 
 def get_data(date, split) -> dict:
-    """Prepare pandas dataframes with training data for plotting"""
+    """Prepare pandas dataframes with training data for plotting
+
+    :param date: _description_
+    :type date: _type_
+    :param split: _description_
+    :type split: _type_
+    :return: _description_
+    :rtype: dict
+    """
 
     datatype = "real"
     data = json.load(open(file="./config.json", encoding="utf-8"))
@@ -41,7 +49,15 @@ def get_data(date, split) -> dict:
 
 
 def compare_workouts(dfs_1, dfs_2):
+    """_summary_
 
+    :param dfs_1: _description_
+    :type dfs_1: _type_
+    :param dfs_2: _description_
+    :type dfs_2: _type_
+    :return: _description_
+    :rtype: _type_
+    """
     common_exercises = []
     for k in sorted(set(dfs_1.keys()).intersection(set(dfs_2.keys()))):
         common_exercises.append(k)
@@ -53,7 +69,13 @@ def compare_workouts(dfs_1, dfs_2):
 
 
 def create_barplots(dfs, date):
-    """Plot training data for specific date"""
+    """Plot training data for specific date
+
+    :param dfs: _description_
+    :type dfs: _type_
+    :param date: _description_
+    :type date: _type_
+    """
 
     # TODO: highten legend transparency
     # TODO: set figure-level x- and y labels ("Set No." and "Repetitions")

@@ -29,8 +29,7 @@ jobs:
         run: poetry --version
 
       - name: Lint with flake8
-        run: |
-          poetry run flake8 --ignore=E402,E501 .
+        run: poetry run flake8 --ignore=E402,E501 .
 
       - name: Static type checks with mypy
         run: poetry run mypy src/

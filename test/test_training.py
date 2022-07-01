@@ -12,7 +12,7 @@ import os
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(SCRIPT_DIR))
 
-from src.CRUD.training import show_exercises
+from src.CRUD.read import show_exercises
 
 
 @pytest.fixture

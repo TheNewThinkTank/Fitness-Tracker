@@ -17,7 +17,7 @@ import uvicorn  # type: ignore
 import json
 from tinydb import TinyDB  # type: ignore
 
-from CRUD.training import describe_workout, show_exercise  # type: ignore
+from CRUD.read import describe_workout, show_exercise  # type: ignore
 
 app = FastAPI()
 
@@ -42,16 +42,37 @@ table = (
 
 @app.get("/")
 async def main_page():
+    """_summary_
+
+    :return: _description_
+    :rtype: _type_
+    """
     return "hello, athlete. Welcome to your tracker!"
 
 
 @app.get("/dates/{date}")
 async def get_workout_description(date: str):
+    """_summary_
+
+    :param date: _description_
+    :type date: str
+    :return: _description_
+    :rtype: _type_
+    """
     return describe_workout(table, date)
 
 
 @app.get("/{date}/exercises/{exercise}")
 async def get_exercise_info(exercise: str, date: str):
+    """_summary_
+
+    :param exercise: _description_
+    :type exercise: str
+    :param date: _description_
+    :type date: str
+    :return: _description_
+    :rtype: _type_
+    """
     return show_exercise(table, exercise, date)
 
 
