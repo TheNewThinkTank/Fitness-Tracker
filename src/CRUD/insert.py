@@ -59,15 +59,16 @@ def insert_specific_log(date, table, workout_number=1) -> None:
     """
 
     YEAR, MONTH = get_year_and_month(date)
+    base_path = f"data/log_archive/JSON/{YEAR}/{MONTH}/"
 
-    if workout_number == 1:
-        log_path = glob.glob(
-            f"data/log_archive/JSON/{YEAR}/{MONTH}/*training_log_{date}.json"
-        )
-    else:
-        log_path = glob.glob(
-            f"data/log_archive/JSON/{YEAR}/{MONTH}/*training_log_{date}_{workout_number}.json"
-        )
+    match workout_number:
+        case 1:
+            log_path = glob.glob(base_path + f"*training_log_{date}.json")
+        case _:
+            log_path = glob.glob(
+                base_path + f"*training_log_{date}_{workout_number}.json"
+            )
+
     insert_log(table, log_path)
 
 
