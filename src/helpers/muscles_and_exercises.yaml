@@ -19,6 +19,7 @@ chest:
 
 back:
   - lat_pulldown
+  - bent_over_row
   - seated_row
   - chinup
   - pullup
