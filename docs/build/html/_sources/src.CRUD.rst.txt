@@ -12,10 +12,18 @@ src.CRUD.insert module
    :undoc-members:
    :show-inheritance:
 
-src.CRUD.training module
-------------------------
+src.CRUD.read module
+--------------------
 
-.. automodule:: src.CRUD.training
+.. automodule:: src.CRUD.read
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.CRUD.update module
+----------------------
+
+.. automodule:: src.CRUD.update
    :members:
    :undoc-members:
    :show-inheritance:
