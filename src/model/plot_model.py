@@ -83,9 +83,9 @@ def create_volume_plots(datatype: str, x: list, y: list, exercise: str) -> None:
     x_prg1, x_prg2, x_prg3 = x[:10], x[10:20], x[20:]
     y_prg1, y_prg2, y_prg3 = y[:10], y[10:20], y[20:]
 
-    ax = sns.regplot(x=x_prg1, y=y_prg1, ci=68, label="Program 1: 4-split")
+    ax = sns.regplot(x=x_prg1, y=y_prg1, ci=68, label="Program 1: 4-SPLIT")
     sns.regplot(x=x_prg2, y=y_prg2, ci=68, label="Program 2: PPL")
-    sns.regplot(x=x_prg3, y=y_prg3, ci=68, label="Program 3: gvt")
+    sns.regplot(x=x_prg3, y=y_prg3, ci=68, label="Program 3: GVT")
 
     ax.set_title(f"{exercise}", fontsize=30)
     xticks = ax.get_xticks()
