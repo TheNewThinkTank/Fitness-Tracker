@@ -59,11 +59,11 @@ def main() -> None:
     """Main function."""
 
     # Read data from a JSON file
-    # data = json.load(open(file="./config.json", encoding="utf-8"))
-    # data = data["real_workout_database"]
-    data = "src/helpers/validate.json"
-    with open(data) as file:
-        data = json.load(file)["weight_training_log"]
+    # file = json.load(open(file="./config.json", encoding="utf-8"))
+    # file = data["real_workout_database"]
+    file = "src/helpers/validate.json"
+    with open(file) as rf:
+        data = json.load(rf)["weight_training_log"]
         # print(data["1"]["date"])
         # print(data.keys())
         workouts: list[Workout] = [Workout(**item) for item in data.values()]
