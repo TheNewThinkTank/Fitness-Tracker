@@ -10,9 +10,9 @@ Visually inspect your progression through dates and exercises
 
 <!-- ![simulation-wf](https://github.com/TheNewThinkTank/Fitness-Tracker/actions/workflows/simulation-wf.yml/badge.svg) -->
 
-Below: workout-date vs training volume for different training programs,<br>
-together with their regression fits/trendlines using 68% confidence intervals.<br>
-(Each program is shown in the legend)
+Below: workout-date vs training volume (product between sets, reps and weight)<br>
+for different training programs, together with their regression fits/trendlines<br>
+using 68% confidence intervals. (Each program is shown in the legend)
 
 ![fitted_data_barbell_bench_press_volume](img/real_fitted_data_barbell_bench_press_gvt.png)
 
