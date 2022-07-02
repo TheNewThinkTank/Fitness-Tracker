@@ -136,7 +136,7 @@ def main() -> None:
     splits_and_key_exercises_gvt = [
         (["chest", "push", "chest_and_back"], "barbell_bench_press"),
         # (["chest_and_back"], "bent_over_row"),
-        # (["legs"], "squat"),
+        (["legs", "legs_and_abs"], "squat"),
     ]
 
     split_selector = {
