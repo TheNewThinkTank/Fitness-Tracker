@@ -5,12 +5,11 @@ Purpose: Get all exercises available for a given musclegroup
 """
 
 import json
-from typing import Dict
 
 import yaml  # type: ignore
 
 
-def get_available_exercises(training_catalogue: str, split: str) -> Dict:
+def get_available_exercises(training_catalogue: str, split: str) -> dict:
     """Fetch musclegroup-exercises catalogue.
 
     :param training_catalogue: Exercises available for each musclegroup
@@ -25,7 +24,7 @@ def get_available_exercises(training_catalogue: str, split: str) -> Dict:
     return available_exercises[split]
 
 
-def main():
+def main() -> None:
     """_summary_"""
     splits: list = ["back"]  # , "chest", "legs", "shoulders"]
 
