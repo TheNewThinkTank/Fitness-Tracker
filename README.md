@@ -14,7 +14,9 @@ Below: workout-date vs training volume (product between sets, reps and weight)<b
 for different training programs, together with their regression fits/trendlines<br>
 using 68% confidence intervals. (Each program is shown in the legend)
 
-![fitted_data_barbell_bench_press_volume](img/real_fitted_data_barbell_bench_press_gvt.png)
+| barbell_bench_press_volume                                                                  | squat_volume                                                    |
+| ------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| ![fitted_data_barbell_bench_press_volume](img/real_fitted_data_barbell_bench_press_gvt.png) | ![fitted_data_squat_volume](img/real_fitted_data_squat_gvt.png) |
 
 Below: key exercises for overall strength indications.<br>
 Each figure displays workout-date vs 1-rep-max estimate for different training programs,<br>
