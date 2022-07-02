@@ -43,15 +43,34 @@ class Workout(pydantic.BaseModel):
                 )
 
             for training_set in exercise:
-                # print(training_set.keys())
                 if not set(training_set.keys()) == {"set no.", "reps", "weight"}:
                     raise ExercisesFormatError(
                         value=value,
-                        message=f"Each set should have: 'set no.', 'reps' and 'weight'. Got: {set(training_set.keys())}",
+                        message="Each set should have: 'set no.', 'reps' and 'weight'.\n"
+                        f"Got: {set(training_set.keys())}",
                     )
 
-            # TODO: sets and reps should be integers
-            # TODO: sets should start from 1, and monotonically increase to number of sets
+                if not isinstance(training_set["weight"], str):
+                    raise ExercisesFormatError(
+                        value=value,
+                        message="The weight must be a string.\n"
+                        f"Got type: {type(training_set['weight'])}\n"
+                        f"and value: {training_set['weight']}",
+                    )
+
+                # TODO: weight must match ^\d{1,3}\skg$
+
+                int_fields = ["set no.", "reps"]
+                for int_field in int_fields:
+                    if not isinstance(training_set[int_field], int):
+                        raise ExercisesFormatError(
+                            value=value,
+                            message=f"The {int_field} must be an integer.\n"
+                            f"Got type: {type(training_set[int_field])}\n"
+                            f"and value: {training_set[int_field]}",
+                        )
+
+                # TODO: sets should start from 1, and monotonically increase to number of sets
 
         return value
 
