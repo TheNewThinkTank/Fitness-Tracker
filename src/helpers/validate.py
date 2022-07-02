@@ -51,6 +51,7 @@ class Workout(pydantic.BaseModel):
                     )
 
             # TODO: sets and reps should be integers
+            # TODO: sets should start from 1, and monotonically increase to number of sets
 
         return value
 
@@ -59,9 +60,9 @@ def main() -> None:
     """Main function."""
 
     # Read data from a JSON file
-    # file = json.load(open(file="./config.json", encoding="utf-8"))
-    # file = data["real_workout_database"]
-    file = "src/helpers/validate.json"
+    file = json.load(open(file="./config.json", encoding="utf-8"))
+    file = file["real_workout_database"]
+    # file = "src/helpers/validate.json"
     with open(file) as rf:
         data = json.load(rf)["weight_training_log"]
         # print(data["1"]["date"])
