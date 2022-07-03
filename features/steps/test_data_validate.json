@@ -5,11 +5,7 @@
       "split": "legs",
       "exercises": {
         "squat": [
-          { "set no.": 1, "reps": 8, "weight": "70 kg" },
-          { "set no.": 2, "reps": 8, "weight": "80 kg" }
-        ],
-        "deadlift": [
-          { "set no.": 1, "reps": 8, "weight": "70 kg" },
+          { "set no.": 1, "reps": 8, "weight": "70.25 kg" },
           { "set no.": 2, "reps": 8, "weight": "80 kg" }
         ]
       }
@@ -18,7 +14,6 @@
       "date": "2021-12-13",
       "split": "chest",
       "exercises": {
-        "squat": [{ "set no.": 1, "reps": 8, "weight": "70 kg" }],
         "deadlift": [
           { "set no.": 1, "reps": 8, "weight": "70 kg" },
           { "set no.": 2, "reps": 8, "weight": "80 kg" }

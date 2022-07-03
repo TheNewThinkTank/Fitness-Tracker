@@ -3,6 +3,7 @@
 
 import json
 from pprint import pprint as pp
+import re
 from typing import Optional
 
 import pydantic
@@ -58,7 +59,14 @@ class Workout(pydantic.BaseModel):
                         f"and value: {training_set['weight']}",
                     )
 
-                # TODO: weight must match ^\d{1,3}\skg$
+                result = re.match(r"\d{1,3}(?:\.\d{1,2})?\skg$", training_set["weight"])
+
+                if result is None:
+                    raise ExercisesFormatError(
+                        value=value,
+                        message=r"Weight field must match regex: \d{1,3}(?:\.\d{1,2})?\skg$"
+                        f"\nreceived value: {training_set['weight']}",
+                    )
 
                 int_fields = ["set no.", "reps"]
                 for int_field in int_fields:
