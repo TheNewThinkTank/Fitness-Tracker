@@ -30,9 +30,14 @@ shoulders:
   - side_laterals
   - front_laterals
   - rear_laterals
+  - reverse_dumbbell_flys
   - dumbbell_military_press
   - cable_crossover
   - arnold_press
+
+arms:
+  - barbell_curl
+  - close_grip_bench_press
 
 abs:
   - crunch
