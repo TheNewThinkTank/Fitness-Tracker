@@ -78,7 +78,24 @@ class Workout(pydantic.BaseModel):
                             f"and value: {training_set[int_field]}",
                         )
 
-                # TODO: sets should start from 1, and monotonically increase to number of sets
+            training_sets = [s["set no."] for s in exercise]
+
+            if not training_sets[0] == 1:
+                raise ExercisesFormatError(
+                    value=value,
+                    message="The first 'set no.' field value must be 1\n"
+                    f"Got value: {training_sets[0]}",
+                )
+
+            def strictly_increasing(training_sets: list) -> bool:
+                return all(x == y - 1 for x, y in zip(training_sets, training_sets[1:]))
+
+            if not strictly_increasing(training_sets):
+                raise ExercisesFormatError(
+                    value=value,
+                    message="The 'set no.' field must be monotonically increasing.\n"
+                    f"Got values: {training_sets}",
+                )
 
         return value
 
