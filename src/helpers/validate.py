@@ -78,6 +78,13 @@ class Workout(pydantic.BaseModel):
                             f"and value: {training_set[int_field]}",
                         )
 
+                if not 1 <= training_set["reps"] <= 100:
+                    raise ExercisesFormatError(
+                        value=value,
+                        message=f"The {'reps'} field value must be between 1 and 100.\n"
+                        f"Got value: {training_set['reps']}",
+                    )
+
             training_sets = [s["set no."] for s in exercise]
 
             if not training_sets[0] == 1:

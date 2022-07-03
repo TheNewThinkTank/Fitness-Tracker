@@ -6,7 +6,7 @@
       "exercises": {
         "squat": [
           { "set no.": 1, "reps": 8, "weight": "70.25 kg" },
-          { "set no.": 2, "reps": 8, "weight": "80 kg" }
+          { "set no.": 2, "reps": 10, "weight": "80 kg" }
         ]
       }
     },
