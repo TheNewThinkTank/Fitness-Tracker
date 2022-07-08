@@ -51,7 +51,7 @@ and last leg workout of program 2 for three selected exercises.<br>
 <!--
 ## Run FastAPI app with Docker from CLI:
 `docker build -t ftimage .`
-`docker run -p 8000:8000 --name ftcontainer ftimage`
+`docker run -d -p 8000:8000 --name ftcontainer ftimage`
 
 ## Update docs:
 cd docs

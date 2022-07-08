@@ -18,6 +18,7 @@ flake8 = "^4.0.1"
 Sphinx = "^5.0.2"
 uvicorn = "^0.18.2"
 pydantic = "^1.9.1"
+watchfiles = "^0.15.0"
 
 [tool.poetry.dev-dependencies]
 
