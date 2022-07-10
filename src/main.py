@@ -17,7 +17,7 @@ from fastapi import FastAPI, HTTPException, Response  # type: ignore
 import json
 from tinydb import TinyDB  # type: ignore
 
-from CRUD.read import get_dates_and_muscle_groups, describe_workout, show_exercise  # type: ignore
+from CRUD.read import get_dates, get_dates_and_muscle_groups, describe_workout, show_exercise  # type: ignore
 
 app = FastAPI()
 
@@ -41,13 +41,23 @@ table = (
 
 
 @app.get("/")
-async def main_page():
+async def main_page() -> Response:
     """_summary_
 
     :return: _description_
     :rtype: str
     """
-    return "hello, athlete. Welcome to your tracker!"
+    return Response("hello, athlete. Welcome to your tracker!")
+
+
+@app.get("/dates")
+async def get_all_dates():
+    """_summary_
+
+    :param table: _description_
+    :type table: _type_
+    """
+    return get_dates(table)
 
 
 @app.get("/dates_and_splits")
@@ -69,6 +79,8 @@ async def get_workout_description(date: str):
     :return: _description_
     :rtype: _type_
     """
+    if date not in get_dates(table):
+        raise HTTPException(status_code=404, detail="Workout date not found")
     return describe_workout(table, date)
 
 

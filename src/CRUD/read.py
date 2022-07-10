@@ -9,6 +9,17 @@ import json
 from tinydb import Query, TinyDB  # type: ignore
 
 
+def get_dates(table) -> list:
+    """Get all workout dates
+
+    :param table: _description_
+    :type table: _type_
+    :return: _description_
+    :rtype: list
+    """
+    return [item["date"] for item in table]
+
+
 def get_dates_and_muscle_groups(table) -> dict:
     """Returns all workout dates with their corresponding muscle groups.
 
