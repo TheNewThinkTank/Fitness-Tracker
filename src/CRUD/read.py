@@ -6,11 +6,10 @@ https://tinydb.readthedocs.io/en/latest/getting-started.html
 """
 
 import json
-from typing import Dict, List
 from tinydb import Query, TinyDB  # type: ignore
 
 
-def get_dates_and_muscle_groups(table) -> Dict:
+def get_dates_and_muscle_groups(table) -> dict:
     """Returns all workout dates with their corresponding muscle groups.
 
     :param table: A TinyDB table
@@ -21,7 +20,7 @@ def get_dates_and_muscle_groups(table) -> Dict:
     return {item["date"]: item["split"] for item in table}
 
 
-def show_exercises(table, date: str) -> List:
+def show_exercises(table, date: str) -> list:
     """Show all exercises for given workout date
 
     :param table: A TinyDB table
@@ -46,7 +45,7 @@ def get_all(log):
     return log.all()
 
 
-def describe_workout(log, date) -> Dict:
+def describe_workout(log, date) -> dict:
     """Simple summary statistics for each exercise"""
 
     d = {}
@@ -59,7 +58,7 @@ def describe_workout(log, date) -> Dict:
     return d
 
 
-def show_exercise(log, exercise, date) -> List:
+def show_exercise(log, exercise, date) -> list:
     """Show detailed data for selected exercise"""
 
     for item in log:
@@ -70,7 +69,7 @@ def show_exercise(log, exercise, date) -> List:
     return []
 
 
-def analyze_workout(table, exercise: str) -> List:
+def analyze_workout(table, exercise: str) -> list:
     """Deeper analysis of workout
 
     :param table: A TinyDB table

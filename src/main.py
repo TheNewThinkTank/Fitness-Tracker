@@ -11,13 +11,13 @@ cd src && uvicorn main:app --reload
 visit URL: http://127.0.0.1:8000/docs
 """
 
-from fastapi import FastAPI  # type: ignore
+from fastapi import FastAPI, HTTPException, Response  # type: ignore
 
 # import uvicorn  # type: ignore
 import json
 from tinydb import TinyDB  # type: ignore
 
-from CRUD.read import describe_workout, show_exercise  # type: ignore
+from CRUD.read import get_dates_and_muscle_groups, describe_workout, show_exercise  # type: ignore
 
 app = FastAPI()
 
@@ -45,9 +45,19 @@ async def main_page():
     """_summary_
 
     :return: _description_
-    :rtype: _type_
+    :rtype: str
     """
     return "hello, athlete. Welcome to your tracker!"
+
+
+@app.get("/dates_and_splits")
+async def get_dates_and_splits():
+    """_summary_
+
+    :return: _description_
+    :rtype: _type_
+    """
+    return get_dates_and_muscle_groups(table)
 
 
 @app.get("/dates/{date}")
