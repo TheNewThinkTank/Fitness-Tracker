@@ -26,7 +26,7 @@ programs:
 
   program_3:
     name: "GVT"
-    splits: [back_and_chest, legs, shoulders_and_arms]
+    splits: [back_and_chest, legs_and_abs, shoulders_and_arms]
     description: |
       German volume training.
       Focus on volume and intensity.
