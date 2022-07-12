@@ -1,7 +1,7 @@
 ---
 programs:
   program_1:
-    name: "4-SPLIT"
+    name: 4-SPLIT
     splits: [legs, chest, back_and_biceps, shoulder_and_abs]
     description: |
       Focus on strength.
@@ -13,7 +13,7 @@ programs:
     number_of_workouts: 40
 
   program_2:
-    name: "PPL"
+    name: PPL
     splits: [push, pull, legs]
     description: |
       Focus on strength.
@@ -25,7 +25,7 @@ programs:
     number_of_workouts: 30
 
   program_3:
-    name: "GVT"
+    name: GVT
     splits: [back_and_chest, legs_and_abs, shoulders_and_arms]
     description: |
       German volume training.
@@ -37,3 +37,12 @@ programs:
     end: 2022-MM-DD
     program_iterations: 10
     number_of_workouts: 30
+
+  program_4:
+    name: ""
+    splits: []
+    description: ""
+    start: 2022-MM-DD
+    end: 2022-MM-DD
+    program_iterations: 10
+    number_of_workouts: ""
