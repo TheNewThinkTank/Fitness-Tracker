@@ -79,6 +79,12 @@
       "discipline": "badminton",
       "duration": "3 hours",
       "note": "Novo Nordisk club championship - men's single and double, A-row"
+    },
+    "15": {
+      "date": "2022-07-10",
+      "discipline": "kayaking",
+      "duration": "3 hours",
+      "location": "Frederiksdal"
     }
   }
 }
