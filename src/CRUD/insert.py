@@ -9,10 +9,9 @@ import glob
 import json
 import os
 import pathlib
-
 import sys
 
-from tinydb import TinyDB  # type: ignore
+from tinydb import TinyDB
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(SCRIPT_DIR))
@@ -27,22 +26,22 @@ def insert_log(table, log_path) -> None:
     :type table: TinyDB table
     :param log_path: A path to the workout log file
         that will be inserted into the table
-    :type log_path: string
+    :type log_path: str
     """
 
-    with open(*log_path) as rf:
+    with open(log_path) as rf:
         json_content = json.load(rf)
     table.insert(json_content)
 
 
-def insert_all_logs(table, folderpath) -> None:
+def insert_all_logs(table, folderpath: str) -> None:
     """Store all training logs in database.
 
     :param table: A TinyDB table
     :type table: TinyDB table
     :param folderpath: A path to the workout log folder,
         from where each file will be inserted into the table
-    :type folderpath: string
+    :type folderpath: str
     """
 
     p = pathlib.Path(folderpath)
@@ -51,7 +50,7 @@ def insert_all_logs(table, folderpath) -> None:
         insert_log(table, p / f)
 
 
-def insert_specific_log(date, table, workout_number=1) -> None:
+def insert_specific_log(date: str, table, workout_number: int = 1) -> None:
     """Store a specific training log in database.
 
     :param date: string of date in format YYYY-MM-DD
@@ -106,10 +105,16 @@ def main() -> None:
     logging.info("Running %s ...", "/".join(__file__.split("/")[-4:]))
 
     data = json.load(open(file="./config.json", encoding="utf-8"))
+    # db = TinyDB('db.json', sort_keys=True, indent=4, separators=(',', ': '))
     db = (
         TinyDB(data["real_workout_database"])
         if datatype == "real"
-        else TinyDB(data["simulated_workout_database"])
+        else TinyDB(
+            data["simulated_workout_database"],
+            sort_keys=True,
+            indent=4,
+            separators=(",", ": "),
+        )
     )
     table = (
         db.table(data["real_weight_table"])
