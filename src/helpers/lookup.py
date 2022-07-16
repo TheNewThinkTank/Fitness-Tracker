@@ -20,12 +20,20 @@ class Months(Enum):
     DECEMBER = 12
 
 
-def get_year_and_month(date="2022-06-27"):
-    """_summary_"""
+def get_year_and_month(date: str = "2022-06-27") -> tuple[str, str]:
+    """_summary_
+
+    :param date: _description_, defaults to "2022-06-27"
+    :type date: str, optional
+    :return: _description_
+    :rtype: tuple[str, str]
+    """
+
     month_zeropadded = date[5:7]
     month = int(month_zeropadded.removeprefix("0"))
     MONTH = Months(month).name.capitalize()
     YEAR = date[:4]
+
     return YEAR, MONTH
 
 
