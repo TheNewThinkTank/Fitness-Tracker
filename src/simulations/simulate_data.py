@@ -22,28 +22,44 @@ class SimulateWorkout:
 
     __slots__ = "workout_date", "progress", "split"
 
-    splits: list = ["back", "chest", "legs", "shoulders"]
+    splits: list[str] = ["back", "chest", "legs", "shoulders"]
     training_catalogue: str = "src/simulations/muscles_and_exercises_weight_ranges.yaml"
     output_dir: str = "data/simulated/"
 
-    def __init__(self, workout_date, progress) -> None:
+    def __init__(self, workout_date: str, progress: int) -> None:
         self.workout_date = workout_date
         self.progress = progress
         self.split = random.choice(self.splits)
 
     def get_available_exercises(self) -> list[dict]:
-        """Fetch musclegroup-exercises catalogue, with weight-ranges."""
+        """Fetch musclegroup-exercises catalogue, with weight-ranges.
+
+        :return: _description_
+        :rtype: list[dict]
+        """
         with open(self.training_catalogue, "r") as rf:
             available_exercises = yaml.load(rf, Loader=yaml.FullLoader)
         return available_exercises[self.split]
 
     def simulate_exercises(self) -> list[dict]:
-        """Simulate data for exercises."""
+        """Simulate data for exercises.
+
+        :return: _description_
+        :rtype: list[dict]
+        """
         return random.sample(self.get_available_exercises(), k=random.randint(2, 6))
 
     def high_reps_low_weight(self, weight_range, actual_reps) -> str:
         """Simulate that higher reps leads to lower weights.
-        choose weight from inverted 1RM estimate plus randomised progression"""
+        choose weight from inverted 1RM estimate plus randomised progression.
+
+        :param weight_range: _description_
+        :type weight_range: _type_
+        :param actual_reps: _description_
+        :type actual_reps: _type_
+        :return: _description_
+        :rtype: str
+        """
 
         weight_choice = weight_range[-1] * ((100 - actual_reps * 2.5) / 100) + np.log10(
             self.progress
@@ -54,7 +70,12 @@ class SimulateWorkout:
         return f"{weight_choice:.2f} kg"
 
     def simulate_sets_reps_weight(self) -> dict:
-        """Simulate data for sets, reps and weight."""
+        """Simulate data for sets, reps and weight.
+
+        :return: _description_
+        :rtype: dict
+        """
+
         mapping: dict = {}
         for exercise in self.simulate_exercises():
             no_of_sets = random.randint(1, 6)
@@ -74,7 +95,12 @@ class SimulateWorkout:
         return mapping
 
     def format_data(self) -> dict:
-        """Prepare data format for JSON file."""
+        """Prepare data format for JSON file.
+
+        :return: _description_
+        :rtype: dict
+        """
+
         return {
             "date": self.workout_date,
             "split": self.split,
@@ -83,6 +109,7 @@ class SimulateWorkout:
 
     def write_data(self) -> None:
         """Insert simulated, formatted data into JSON file."""
+
         date = self.format_data()["date"]
         p = pathlib.Path(self.output_dir)
         p.mkdir(parents=True, exist_ok=True)
@@ -93,9 +120,21 @@ class SimulateWorkout:
 
 
 def get_dates(number_of_workouts: int, start: datetime, periods: int) -> list[str]:
-    """Get list of dates."""
+    """Get list of dates.
+
+    :param number_of_workouts: _description_
+    :type number_of_workouts: int
+    :param start: _description_
+    :type start: datetime
+    :param periods: _description_
+    :type periods: int
+    :return: _description_
+    :rtype: list[str]
+    """
+
     datelist = pd.date_range(start, periods=periods).tolist()
     datelist = [date.strftime("%Y-%m-%d") for date in datelist]
+
     return random.sample(datelist, k=number_of_workouts)
 
 
