@@ -9,16 +9,17 @@ import json
 import yaml  # type: ignore
 
 
-def get_available_exercises(training_catalogue: str, split: str) -> dict:
+def get_available_exercises(training_catalogue: str, split: str) -> list[str]:
     """Fetch musclegroup-exercises catalogue.
 
     :param training_catalogue: Exercises available for each musclegroup
-    :type training_catalogue: String
+    :type training_catalogue: str
     :param split: Name of musclegroup
-    :type split: String
-    :return: A dictionary of available exercises for a given split / musclegroup
-    :rtype: Dictionary
+    :type split: str
+    :return: A list of available exercises for a given split / musclegroup
+    :rtype: list
     """
+
     with open(training_catalogue, "r") as rf:
         available_exercises = yaml.load(rf, Loader=yaml.FullLoader)
     return available_exercises[split]
@@ -26,7 +27,13 @@ def get_available_exercises(training_catalogue: str, split: str) -> dict:
 
 def main() -> None:
     """_summary_"""
-    splits: list = ["back"]  # , "chest", "legs", "shoulders"]
+
+    splits: list = [
+        "back",
+        # "chest",
+        # "legs",
+        # "shoulders",
+    ]
 
     data = json.load(open(file="./config.json", encoding="utf-8"))
     training_catalogue = data["training_catalogue"]
