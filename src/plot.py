@@ -5,6 +5,7 @@ Purpose: Plot weight-training data
 """
 
 import json
+from typing import Dict, Tuple, Any
 
 import matplotlib.pyplot as plt  # type: ignore
 import pandas as pd  # type: ignore
@@ -15,15 +16,15 @@ from CRUD.read import show_exercise  # type: ignore
 from helpers.get_exercises import get_available_exercises  # type: ignore
 
 
-def get_data(date, split) -> dict:
+def get_data(date: str, split: str) -> Dict[str, pd.DataFrame] | dict:
     """Prepare pandas dataframes with training data for plotting
 
     :param date: _description_
-    :type date: _type_
+    :type date: str
     :param split: _description_
-    :type split: _type_
+    :type split: str
     :return: _description_
-    :rtype: dict
+    :rtype: Dict[str, pd.DataFrame] | dict
     """
 
     datatype = "real"
@@ -48,16 +49,17 @@ def get_data(date, split) -> dict:
     }
 
 
-def compare_workouts(dfs_1, dfs_2):
+def compare_workouts(dfs_1: dict, dfs_2: dict) -> Tuple[Dict[Any, Any], Dict[Any, Any]]:
     """_summary_
 
     :param dfs_1: _description_
-    :type dfs_1: _type_
+    :type dfs_1: dict
     :param dfs_2: _description_
-    :type dfs_2: _type_
+    :type dfs_2: dict
     :return: _description_
-    :rtype: _type_
+    :rtype: Tuple[Dict[Any, Any], Dict[Any, Any]]
     """
+
     common_exercises = []
     for k in sorted(set(dfs_1.keys()).intersection(set(dfs_2.keys()))):
         common_exercises.append(k)
@@ -68,13 +70,13 @@ def compare_workouts(dfs_1, dfs_2):
     return dfs_1_common, dfs_2_common
 
 
-def create_barplots(dfs, date):
+def create_barplots(dfs: dict, date: str) -> None:
     """Plot training data for specific date
 
     :param dfs: _description_
-    :type dfs: _type_
+    :type dfs: dict
     :param date: _description_
-    :type date: _type_
+    :type date: str
     """
 
     # TODO: highten legend transparency
@@ -149,7 +151,7 @@ def create_barplots(dfs, date):
     plt.savefig(f"img/workout_{date}.png")
 
 
-def main():
+def main() -> None:
     """Get data and create figure."""
 
     dates = [
@@ -168,7 +170,7 @@ def main():
 
     create_barplots(dfs_1_common, dates[0])
     create_barplots(dfs_2_common, dates[-1])
-    # plt.show()
+    plt.show()
 
 
 if __name__ == "__main__":
