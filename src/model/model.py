@@ -5,6 +5,8 @@
              using the Scikit Learn library
 """
 
+# TODO: 1RM functions or class
+
 from datetime import datetime
 import json
 import pandas as pd  # type: ignore
@@ -18,7 +20,7 @@ from tinydb import TinyDB  # type: ignore
 
 def get_df(
     log,
-    splits: list = ["chest", "push", "chest_and_back"],
+    splits: list[str] = ["chest", "push", "chest_and_back"],
     exercise: str = "barbell_bench_press",
 ) -> pd.DataFrame:
     """Return one consolidated Pandas dataframe containing workout date and training data
@@ -33,6 +35,7 @@ def get_df(
     :return: _description_
     :rtype: pd.DataFrame
     """
+
     frames = []
     for item in log:
         if any(x in item["split"] for x in splits):
@@ -40,6 +43,7 @@ def get_df(
                 df = pd.DataFrame(item["exercises"][exercise])
                 df["date"] = item["date"]
                 frames.append(df)
+
     return pd.concat(frames)
 
 
@@ -63,7 +67,7 @@ def calc_volume(df: pd.DataFrame) -> pd.DataFrame:
     return df_res.drop(["set no.", "reps", "weight"], axis=1)
 
 
-def one_rep_max_estimator(df) -> pd.DataFrame:
+def one_rep_max_estimator(df: pd.DataFrame) -> pd.DataFrame:
     """The ACSM (American College of Sports Medicine) protocol
     is used to implement the 1RM estimation
 
@@ -78,6 +82,7 @@ def one_rep_max_estimator(df) -> pd.DataFrame:
     df_copy["1RM"] = df["weight"].str.strip(" kg").astype(float) / (
         (100 - df["reps"] * 2.5) / 100
     )
+
     return df_copy.groupby("date")[["1RM"]].agg("max")
 
 
@@ -108,7 +113,7 @@ def get_data(df, y_col="1RM") -> Tuple[List[float], List[float]]:
     return x, y
 
 
-def main():
+def main() -> None:
     """Prepare dfs, calc 1RM and do linear regression."""
     import logging
 
