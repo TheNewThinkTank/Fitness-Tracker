@@ -10,9 +10,12 @@ import json
 import pandas as pd  # type: ignore
 
 
-def json2csv(infile) -> None:
+def json2csv(infile: str) -> None:
     """Read nested JSON file, flatten it, apply additional transformations,
     and write results to csv format
+
+    :param infile: _description_
+    :type infile: str
     """
 
     with open(infile, "r") as rf:
@@ -37,8 +40,9 @@ def json2csv(infile) -> None:
     df.to_csv(outfile, index=False)
 
 
-def main():
+def main() -> None:
     """Convert all JSON files inside nested folders to CSV"""
+
     from pathlib import Path
 
     dircontent = []
