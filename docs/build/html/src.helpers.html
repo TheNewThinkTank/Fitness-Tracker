@@ -194,7 +194,7 @@
                     </h2>
                     <p>
                       Date: 2021-12-25 Author: Gustav Collin Rasmussen Purpose:
-                      empty specified folder
+                      empty specified folder or file
                     </p>
                     <dl class="py function">
                       <dt
@@ -207,8 +207,11 @@
                           ><span class="pre">cleanup</span></span
                         ><span class="sig-paren">(</span
                         ><em class="sig-param"
+                          ><span class="n"><span class="pre">path</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
                           ><span class="n"
-                            ><span class="pre">path</span></span
+                            ><span class="pre">str</span></span
                           ></em
                         ><span class="sig-paren">)</span>
                         <span class="sig-return"
@@ -223,7 +226,18 @@
                           ></a
                         >
                       </dt>
-                      <dd><p>Empty all files in path.</p></dd>
+                      <dd>
+                        <p>Empty all files in path.</p>
+                        <dl class="field-list simple">
+                          <dt class="field-odd">Parameters</dt>
+                          <dd class="field-odd">
+                            <p>
+                              <strong>path</strong> (<em>str</em>) –
+                              _description_
+                            </p>
+                          </dd>
+                        </dl>
+                      </dd>
                     </dl>
 
                     <dl class="py function">
@@ -239,6 +253,10 @@
                         ><em class="sig-param"
                           ><span class="n"
                             ><span class="pre">file_path</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
                           ></em
                         ><span class="sig-paren">)</span>
                         <span class="sig-return"
@@ -253,7 +271,18 @@
                           ></a
                         >
                       </dt>
-                      <dd><p>Empty content in file.</p></dd>
+                      <dd>
+                        <p>Empty content in file.</p>
+                        <dl class="field-list simple">
+                          <dt class="field-odd">Parameters</dt>
+                          <dd class="field-odd">
+                            <p>
+                              <strong>file_path</strong> (<em>str</em>) –
+                              _description_
+                            </p>
+                          </dd>
+                        </dl>
+                      </dd>
                     </dl>
 
                     <dl class="py function">
@@ -267,15 +296,27 @@
                           ><span class="pre">main</span></span
                         ><span class="sig-paren">(</span
                         ><em class="sig-param"
+                          ><span class="n"><span class="pre">path</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
                           ><span class="n"
-                            ><span class="pre">path</span></span
+                            ><span class="pre">str</span></span
                           ></em
                         >,
                         <em class="sig-param"
                           ><span class="n"
                             ><span class="pre">file_path</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
                           ></em
-                        ><span class="sig-paren">)</span
+                        ><span class="sig-paren">)</span>
+                        <span class="sig-return"
+                          ><span class="sig-return-icon">&#x2192;</span>
+                          <span class="sig-return-typehint"
+                            ><span class="pre">None</span></span
+                          ></span
                         ><a
                           class="headerlink"
                           href="#src.helpers.cleanup.main"
@@ -283,7 +324,28 @@
                           ></a
                         >
                       </dt>
-                      <dd></dd>
+                      <dd>
+                        <p>_summary_</p>
+                        <dl class="field-list simple">
+                          <dt class="field-odd">Parameters</dt>
+                          <dd class="field-odd">
+                            <ul class="simple">
+                              <li>
+                                <p>
+                                  <strong>path</strong> (<em>str</em>) –
+                                  _description_
+                                </p>
+                              </li>
+                              <li>
+                                <p>
+                                  <strong>file_path</strong> (<em>str</em>) –
+                                  _description_
+                                </p>
+                              </li>
+                            </ul>
+                          </dd>
+                        </dl>
+                      </dd>
                     </dl>
                   </section>
                   <section id="module-src.helpers.get_exercises">
@@ -334,7 +396,12 @@
                         <span class="sig-return"
                           ><span class="sig-return-icon">&#x2192;</span>
                           <span class="sig-return-typehint"
-                            ><span class="pre">Dict</span></span
+                            ><span class="pre">list</span
+                            ><span class="p"><span class="pre">[</span></span
+                            ><span class="pre">str</span
+                            ><span class="p"
+                              ><span class="pre">]</span></span
+                            ></span
                           ></span
                         ><a
                           class="headerlink"
@@ -352,14 +419,14 @@
                               <li>
                                 <p>
                                   <strong>training_catalogue</strong>
-                                  (<em>String</em>) – Exercises available for
-                                  each musclegroup
+                                  (<em>str</em>) – Exercises available for each
+                                  musclegroup
                                 </p>
                               </li>
                               <li>
                                 <p>
-                                  <strong>split</strong> (<em>String</em>) –
-                                  Name of musclegroup
+                                  <strong>split</strong> (<em>str</em>) – Name
+                                  of musclegroup
                                 </p>
                               </li>
                             </ul>
@@ -367,12 +434,12 @@
                           <dt class="field-even">Returns</dt>
                           <dd class="field-even">
                             <p>
-                              A dictionary of available exercises for a given
-                              split / musclegroup
+                              A list of available exercises for a given split /
+                              musclegroup
                             </p>
                           </dd>
                           <dt class="field-odd">Return type</dt>
-                          <dd class="field-odd"><p>Dictionary</p></dd>
+                          <dd class="field-odd"><p>list</p></dd>
                         </dl>
                       </dd>
                     </dl>
@@ -389,7 +456,12 @@
                         ><span class="sig-name descname"
                           ><span class="pre">main</span></span
                         ><span class="sig-paren">(</span
-                        ><span class="sig-paren">)</span
+                        ><span class="sig-paren">)</span>
+                        <span class="sig-return"
+                          ><span class="sig-return-icon">&#x2192;</span>
+                          <span class="sig-return-typehint"
+                            ><span class="pre">None</span></span
+                          ></span
                         ><a
                           class="headerlink"
                           href="#src.helpers.get_exercises.main"
@@ -426,8 +498,11 @@
                           ><span class="pre">json2csv</span></span
                         ><span class="sig-paren">(</span
                         ><em class="sig-param"
+                          ><span class="n"><span class="pre">infile</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
                           ><span class="n"
-                            ><span class="pre">infile</span></span
+                            ><span class="pre">str</span></span
                           ></em
                         ><span class="sig-paren">)</span>
                         <span class="sig-return"
@@ -447,6 +522,15 @@
                           Read nested JSON file, flatten it, apply additional
                           transformations, and write results to csv format
                         </p>
+                        <dl class="field-list simple">
+                          <dt class="field-odd">Parameters</dt>
+                          <dd class="field-odd">
+                            <p>
+                              <strong>infile</strong> (<em>str</em>) –
+                              _description_
+                            </p>
+                          </dd>
+                        </dl>
                       </dd>
                     </dl>
 
@@ -460,7 +544,12 @@
                         ><span class="sig-name descname"
                           ><span class="pre">main</span></span
                         ><span class="sig-paren">(</span
-                        ><span class="sig-paren">)</span
+                        ><span class="sig-paren">)</span>
+                        <span class="sig-return"
+                          ><span class="sig-return-icon">&#x2192;</span>
+                          <span class="sig-return-typehint"
+                            ><span class="pre">None</span></span
+                          ></span
                         ><a
                           class="headerlink"
                           href="#src.helpers.json2csv.main"
@@ -801,11 +890,28 @@
                         ><span class="sig-paren">(</span
                         ><em class="sig-param"
                           ><span class="n"><span class="pre">date</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"><span class="pre">str</span></span
+                          ><span class="w"> </span
                           ><span class="o"><span class="pre">=</span></span
+                          ><span class="w"> </span
                           ><span class="default_value"
                             ><span class="pre">'2022-06-27'</span></span
                           ></em
-                        ><span class="sig-paren">)</span
+                        ><span class="sig-paren">)</span>
+                        <span class="sig-return"
+                          ><span class="sig-return-icon">&#x2192;</span>
+                          <span class="sig-return-typehint"
+                            ><span class="pre">tuple</span
+                            ><span class="p"><span class="pre">[</span></span
+                            ><span class="pre">str</span
+                            ><span class="p"><span class="pre">,</span></span
+                            ><span class="w"> </span><span class="pre">str</span
+                            ><span class="p"
+                              ><span class="pre">]</span></span
+                            ></span
+                          ></span
                         ><a
                           class="headerlink"
                           href="#src.helpers.lookup.get_year_and_month"
@@ -813,7 +919,23 @@
                           ></a
                         >
                       </dt>
-                      <dd><p>_summary_</p></dd>
+                      <dd>
+                        <p>_summary_</p>
+                        <dl class="field-list simple">
+                          <dt class="field-odd">Parameters</dt>
+                          <dd class="field-odd">
+                            <p>
+                              <strong>date</strong> (<em>str</em><em>, </em
+                              ><em>optional</em>) – _description_, defaults to
+                              “2022-06-27”
+                            </p>
+                          </dd>
+                          <dt class="field-even">Returns</dt>
+                          <dd class="field-even"><p>_description_</p></dd>
+                          <dt class="field-odd">Return type</dt>
+                          <dd class="field-odd"><p>tuple[str, str]</p></dd>
+                        </dl>
+                      </dd>
                     </dl>
                   </section>
                   <section id="module-src.helpers">

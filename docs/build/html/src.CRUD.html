@@ -215,6 +215,10 @@
                         <em class="sig-param"
                           ><span class="n"
                             ><span class="pre">folderpath</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
                           ></em
                         ><span class="sig-paren">)</span>
                         <span class="sig-return"
@@ -243,8 +247,8 @@
                               </li>
                               <li>
                                 <p>
-                                  <strong>folderpath</strong> (<em>string</em>)
-                                  – A path to the workout log folder, from where
+                                  <strong>folderpath</strong> (<em>str</em>) – A
+                                  path to the workout log folder, from where
                                   each file will be inserted into the table
                                 </p>
                               </li>
@@ -300,8 +304,8 @@
                               </li>
                               <li>
                                 <p>
-                                  <strong>log_path</strong> (<em>string</em>) –
-                                  A path to the workout log file that will be
+                                  <strong>log_path</strong> (<em>str</em>) – A
+                                  path to the workout log file that will be
                                   inserted into the table
                                 </p>
                               </li>
@@ -322,8 +326,11 @@
                           ><span class="pre">insert_specific_log</span></span
                         ><span class="sig-paren">(</span
                         ><em class="sig-param"
+                          ><span class="n"><span class="pre">date</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
                           ><span class="n"
-                            ><span class="pre">date</span></span
+                            ><span class="pre">str</span></span
                           ></em
                         >,
                         <em class="sig-param"
@@ -334,7 +341,12 @@
                         <em class="sig-param"
                           ><span class="n"
                             ><span class="pre">workout_number</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"><span class="pre">int</span></span
+                          ><span class="w"> </span
                           ><span class="o"><span class="pre">=</span></span
+                          ><span class="w"> </span
                           ><span class="default_value"
                             ><span class="pre">1</span></span
                           ></em
@@ -456,7 +468,7 @@
                         <span class="sig-return"
                           ><span class="sig-return-icon">&#x2192;</span>
                           <span class="sig-return-typehint"
-                            ><span class="pre">List</span></span
+                            ><span class="pre">list</span></span
                           ></span
                         ><a
                           class="headerlink"
@@ -479,12 +491,16 @@
                               </li>
                               <li>
                                 <p>
-                                  <strong>exercise</strong> (<em>string</em>) –
+                                  <strong>exercise</strong> (<em>str</em>) –
                                   Name of exercise to analyze
                                 </p>
                               </li>
                             </ul>
                           </dd>
+                          <dt class="field-even">Returns</dt>
+                          <dd class="field-even"><p>_description_</p></dd>
+                          <dt class="field-odd">Return type</dt>
+                          <dd class="field-odd"><p>list</p></dd>
                         </dl>
                       </dd>
                     </dl>
@@ -505,14 +521,17 @@
                           ></em
                         >,
                         <em class="sig-param"
+                          ><span class="n"><span class="pre">date</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
                           ><span class="n"
-                            ><span class="pre">date</span></span
+                            ><span class="pre">str</span></span
                           ></em
                         ><span class="sig-paren">)</span>
                         <span class="sig-return"
                           ><span class="sig-return-icon">&#x2192;</span>
                           <span class="sig-return-typehint"
-                            ><span class="pre">Dict</span></span
+                            ><span class="pre">dict</span></span
                           ></span
                         ><a
                           class="headerlink"
@@ -523,6 +542,29 @@
                       </dt>
                       <dd>
                         <p>Simple summary statistics for each exercise</p>
+                        <dl class="field-list simple">
+                          <dt class="field-odd">Parameters</dt>
+                          <dd class="field-odd">
+                            <ul class="simple">
+                              <li>
+                                <p>
+                                  <strong>log</strong> (<em>_type_</em>) –
+                                  _description_
+                                </p>
+                              </li>
+                              <li>
+                                <p>
+                                  <strong>date</strong> (<em>str</em>) –
+                                  _description_
+                                </p>
+                              </li>
+                            </ul>
+                          </dd>
+                          <dt class="field-even">Returns</dt>
+                          <dd class="field-even"><p>_description_</p></dd>
+                          <dt class="field-odd">Return type</dt>
+                          <dd class="field-odd"><p>dict</p></dd>
+                        </dl>
                       </dd>
                     </dl>
 
@@ -535,9 +577,19 @@
                         ><span class="sig-paren">(</span
                         ><em class="sig-param"
                           ><span class="n"
-                            ><span class="pre">log</span></span
+                            ><span class="pre">table</span></span
                           ></em
-                        ><span class="sig-paren">)</span
+                        ><span class="sig-paren">)</span>
+                        <span class="sig-return"
+                          ><span class="sig-return-icon">&#x2192;</span>
+                          <span class="sig-return-typehint"
+                            ><span class="pre">list</span
+                            ><span class="p"><span class="pre">[</span></span
+                            ><span class="pre">dict</span
+                            ><span class="p"
+                              ><span class="pre">]</span></span
+                            ></span
+                          ></span
                         ><a
                           class="headerlink"
                           href="#src.CRUD.read.get_all"
@@ -545,7 +597,72 @@
                           ></a
                         >
                       </dt>
-                      <dd><p>get all documents</p></dd>
+                      <dd>
+                        <p>get all documents</p>
+                        <dl class="field-list simple">
+                          <dt class="field-odd">Parameters</dt>
+                          <dd class="field-odd">
+                            <p>
+                              <strong>table</strong> (<em>_type_</em>) –
+                              _description_
+                            </p>
+                          </dd>
+                          <dt class="field-even">Returns</dt>
+                          <dd class="field-even"><p>_description_</p></dd>
+                          <dt class="field-odd">Return type</dt>
+                          <dd class="field-odd"><p>list[dict]</p></dd>
+                        </dl>
+                      </dd>
+                    </dl>
+
+                    <dl class="py function">
+                      <dt
+                        class="sig sig-object py"
+                        id="src.CRUD.read.get_dates"
+                      >
+                        <span class="sig-prename descclassname"
+                          ><span class="pre">src.CRUD.read.</span></span
+                        ><span class="sig-name descname"
+                          ><span class="pre">get_dates</span></span
+                        ><span class="sig-paren">(</span
+                        ><em class="sig-param"
+                          ><span class="n"
+                            ><span class="pre">table</span></span
+                          ></em
+                        ><span class="sig-paren">)</span>
+                        <span class="sig-return"
+                          ><span class="sig-return-icon">&#x2192;</span>
+                          <span class="sig-return-typehint"
+                            ><span class="pre">list</span
+                            ><span class="p"><span class="pre">[</span></span
+                            ><span class="pre">str</span
+                            ><span class="p"
+                              ><span class="pre">]</span></span
+                            ></span
+                          ></span
+                        ><a
+                          class="headerlink"
+                          href="#src.CRUD.read.get_dates"
+                          title="Permalink to this definition"
+                          ></a
+                        >
+                      </dt>
+                      <dd>
+                        <p>Get all workout dates</p>
+                        <dl class="field-list simple">
+                          <dt class="field-odd">Parameters</dt>
+                          <dd class="field-odd">
+                            <p>
+                              <strong>table</strong> (<em>_type_</em>) –
+                              _description_
+                            </p>
+                          </dd>
+                          <dt class="field-even">Returns</dt>
+                          <dd class="field-even"><p>_description_</p></dd>
+                          <dt class="field-odd">Return type</dt>
+                          <dd class="field-odd"><p>list[str]</p></dd>
+                        </dl>
+                      </dd>
                     </dl>
 
                     <dl class="py function">
@@ -568,7 +685,14 @@
                         <span class="sig-return"
                           ><span class="sig-return-icon">&#x2192;</span>
                           <span class="sig-return-typehint"
-                            ><span class="pre">Dict</span></span
+                            ><span class="pre">dict</span
+                            ><span class="p"><span class="pre">[</span></span
+                            ><span class="pre">str</span
+                            ><span class="p"><span class="pre">,</span></span
+                            ><span class="w"> </span><span class="pre">str</span
+                            ><span class="p"
+                              ><span class="pre">]</span></span
+                            ></span
                           ></span
                         ><a
                           class="headerlink"
@@ -598,7 +722,7 @@
                             </p>
                           </dd>
                           <dt class="field-odd">Return type</dt>
-                          <dd class="field-odd"><p>Dictionary</p></dd>
+                          <dd class="field-odd"><p>dict[str, str]</p></dd>
                         </dl>
                       </dd>
                     </dl>
@@ -610,7 +734,12 @@
                         ><span class="sig-name descname"
                           ><span class="pre">main</span></span
                         ><span class="sig-paren">(</span
-                        ><span class="sig-paren">)</span
+                        ><span class="sig-paren">)</span>
+                        <span class="sig-return"
+                          ><span class="sig-return-icon">&#x2192;</span>
+                          <span class="sig-return-typehint"
+                            ><span class="pre">None</span></span
+                          ></span
                         ><a
                           class="headerlink"
                           href="#src.CRUD.read.main"
@@ -618,7 +747,7 @@
                           ></a
                         >
                       </dt>
-                      <dd></dd>
+                      <dd><p>_summary_</p></dd>
                     </dl>
 
                     <dl class="py function">
@@ -639,17 +768,24 @@
                         <em class="sig-param"
                           ><span class="n"
                             ><span class="pre">exercise</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
                           ></em
                         >,
                         <em class="sig-param"
+                          ><span class="n"><span class="pre">date</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
                           ><span class="n"
-                            ><span class="pre">date</span></span
+                            ><span class="pre">str</span></span
                           ></em
                         ><span class="sig-paren">)</span>
                         <span class="sig-return"
                           ><span class="sig-return-icon">&#x2192;</span>
                           <span class="sig-return-typehint"
-                            ><span class="pre">List</span></span
+                            ><span class="pre">list</span></span
                           ></span
                         ><a
                           class="headerlink"
@@ -658,7 +794,38 @@
                           ></a
                         >
                       </dt>
-                      <dd><p>Show detailed data for selected exercise</p></dd>
+                      <dd>
+                        <p>Show detailed data for selected exercise</p>
+                        <dl class="field-list simple">
+                          <dt class="field-odd">Parameters</dt>
+                          <dd class="field-odd">
+                            <ul class="simple">
+                              <li>
+                                <p>
+                                  <strong>log</strong> (<em>_type_</em>) –
+                                  _description_
+                                </p>
+                              </li>
+                              <li>
+                                <p>
+                                  <strong>exercise</strong> (<em>str</em>) –
+                                  _description_
+                                </p>
+                              </li>
+                              <li>
+                                <p>
+                                  <strong>date</strong> (<em>str</em>) –
+                                  _description_
+                                </p>
+                              </li>
+                            </ul>
+                          </dd>
+                          <dt class="field-even">Returns</dt>
+                          <dd class="field-even"><p>_description_</p></dd>
+                          <dt class="field-odd">Return type</dt>
+                          <dd class="field-odd"><p>list</p></dd>
+                        </dl>
+                      </dd>
                     </dl>
 
                     <dl class="py function">
@@ -687,7 +854,12 @@
                         <span class="sig-return"
                           ><span class="sig-return-icon">&#x2192;</span>
                           <span class="sig-return-typehint"
-                            ><span class="pre">List</span></span
+                            ><span class="pre">list</span
+                            ><span class="p"><span class="pre">[</span></span
+                            ><span class="pre">str</span
+                            ><span class="p"
+                              ><span class="pre">]</span></span
+                            ></span
                           ></span
                         ><a
                           class="headerlink"
@@ -710,8 +882,8 @@
                               </li>
                               <li>
                                 <p>
-                                  <strong>date</strong> (<em>String</em>) – Date
-                                  of a given workout
+                                  <strong>date</strong> (<em>str</em>) – Date of
+                                  a given workout
                                 </p>
                               </li>
                             </ul>
@@ -721,7 +893,7 @@
                             <p>A list of exercises performed on a given date</p>
                           </dd>
                           <dt class="field-odd">Return type</dt>
-                          <dd class="field-odd"><p>List</p></dd>
+                          <dd class="field-odd"><p>list[str]</p></dd>
                         </dl>
                       </dd>
                     </dl>
