@@ -8,8 +8,16 @@ import json
 from tinydb import TinyDB  # type: ignore
 
 
-def cleanup(db, table, action) -> None:
-    """Update, remove or truncate database"""
+def cleanup(db, table, action: str) -> None:
+    """Update, remove or truncate database
+
+    :param db: _description_
+    :type db: _type_
+    :param table: _description_
+    :type table: _type_
+    :param action: _description_
+    :type action: str
+    """
 
     # TODO: implement update and remove actions
     if action == "update":
@@ -26,7 +34,7 @@ def cleanup(db, table, action) -> None:
         pass
 
 
-def main():
+def main() -> None:
     datamodels = ["real", "simulated"]
     datatype = datamodels[0]
 
