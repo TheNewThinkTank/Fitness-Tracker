@@ -45,47 +45,52 @@ async def main_page() -> Response:
     """_summary_
 
     :return: _description_
-    :rtype: str
+    :rtype: Response
     """
+
     return Response("hello, athlete. Welcome to your tracker!")
 
 
 @app.get("/dates")
-async def get_all_dates():
+async def get_all_dates() -> list:
     """_summary_
 
-    :param table: _description_
-    :type table: _type_
+    :return: _description_
+    :rtype: list
     """
+
     return get_dates(table)
 
 
 @app.get("/dates_and_splits")
-async def get_dates_and_splits():
+async def get_dates_and_splits() -> dict:
     """_summary_
 
     :return: _description_
-    :rtype: _type_
+    :rtype: dict
     """
+
     return get_dates_and_muscle_groups(table)
 
 
 @app.get("/dates/{date}")
-async def get_workout_description(date: str):
+async def get_workout_description(date: str) -> HTTPException | dict:
     """_summary_
 
     :param date: _description_
     :type date: str
+    :raises HTTPException: _description_
     :return: _description_
-    :rtype: _type_
+    :rtype: HTTPException | dict
     """
+
     if date not in get_dates(table):
         raise HTTPException(status_code=404, detail="Workout date not found")
     return describe_workout(table, date)
 
 
 @app.get("/{date}/exercises/{exercise}")
-async def get_exercise_info(exercise: str, date: str):
+async def get_exercise_info(exercise: str, date: str) -> list:
     """_summary_
 
     :param exercise: _description_
@@ -93,8 +98,9 @@ async def get_exercise_info(exercise: str, date: str):
     :param date: _description_
     :type date: str
     :return: _description_
-    :rtype: _type_
+    :rtype: list
     """
+
     return show_exercise(table, exercise, date)
 
 
