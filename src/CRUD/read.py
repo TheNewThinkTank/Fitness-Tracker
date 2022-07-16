@@ -9,37 +9,39 @@ import json
 from tinydb import Query, TinyDB  # type: ignore
 
 
-def get_dates(table) -> list:
+def get_dates(table) -> list[str]:
     """Get all workout dates
 
     :param table: _description_
     :type table: _type_
     :return: _description_
-    :rtype: list
+    :rtype: list[str]
     """
+
     return [item["date"] for item in table]
 
 
-def get_dates_and_muscle_groups(table) -> dict:
+def get_dates_and_muscle_groups(table) -> dict[str, str]:
     """Returns all workout dates with their corresponding muscle groups.
 
     :param table: A TinyDB table
     :type table: TinyDB table
     :return: A dictionary of workout dates and corresponding splits / musclegroup
-    :rtype: Dictionary
+    :rtype: dict[str, str]
     """
+
     return {item["date"]: item["split"] for item in table}
 
 
-def show_exercises(table, date: str) -> list:
+def show_exercises(table, date: str) -> list[str]:
     """Show all exercises for given workout date
 
     :param table: A TinyDB table
     :type table: TinyDB table
     :param date: Date of a given workout
-    :type date: String
+    :type date: str
     :return: A list of exercises performed on a given date
-    :rtype: List
+    :rtype: list[str]
     """
 
     all_exercises_during_workout = []
@@ -51,13 +53,28 @@ def show_exercises(table, date: str) -> list:
     return all_exercises_during_workout
 
 
-def get_all(log):
-    """get all documents"""
-    return log.all()
+def get_all(table) -> list[dict]:
+    """get all documents
+
+    :param table: _description_
+    :type table: _type_
+    :return: _description_
+    :rtype: list[dict]
+    """
+
+    return table.all()
 
 
-def describe_workout(log, date) -> dict:
-    """Simple summary statistics for each exercise"""
+def describe_workout(log, date: str) -> dict:
+    """Simple summary statistics for each exercise
+
+    :param log: _description_
+    :type log: _type_
+    :param date: _description_
+    :type date: str
+    :return: _description_
+    :rtype: dict
+    """
 
     d = {}
     for item in log:
@@ -69,8 +86,18 @@ def describe_workout(log, date) -> dict:
     return d
 
 
-def show_exercise(log, exercise, date) -> list:
-    """Show detailed data for selected exercise"""
+def show_exercise(log, exercise: str, date: str) -> list:
+    """Show detailed data for selected exercise
+
+    :param log: _description_
+    :type log: _type_
+    :param exercise: _description_
+    :type exercise: str
+    :param date: _description_
+    :type date: str
+    :return: _description_
+    :rtype: list
+    """
 
     for item in log:
         if item["date"] == date:
@@ -86,14 +113,20 @@ def analyze_workout(table, exercise: str) -> list:
     :param table: A TinyDB table
     :type table: TinyDB table
     :param exercise: Name of exercise to analyze
-    :type exercise: string
+    :type exercise: str
+    :return: _description_
+    :rtype: list
     """
+
     Log = Query()
     data = table.search(Log["exercises"][exercise].exists())
+
     return [d["exercises"][exercise] for d in data]
 
 
-def main():
+def main() -> None:
+    """_summary_"""
+
     datamodels = ["real", "simulated"]
     datatype = datamodels[0]
 
@@ -112,9 +145,10 @@ def main():
     # dates_and_muscle_groups = get_dates_and_muscle_groups(table)
     # print(dates_and_muscle_groups)
     # print(show_exercises(table, "2021-12-16"))
+    print(get_all(table))
     # print(describe_workout(table, "2021-12-13"))
     # show_exercise(table, "squat", "2021-12-11")
-    print(analyze_workout(table, "squat"))
+    # print(analyze_workout(table, "squat"))
 
 
 if __name__ == "__main__":
