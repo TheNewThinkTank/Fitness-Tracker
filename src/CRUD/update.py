@@ -18,11 +18,9 @@ def update_table(table) -> None:
     #         Exercise.chinup == [{"reps": 6, "set no.": 1, "weight": "13.43 kg"}]
     #     )
     # )
-
-    table.search(Workout.exercises.Exercise.fragment({"foo": True, "bar": False}))
-
     # table.search(Check["json-object"]["test"].exists())
     # table.update({"reps": 10}, Item.exercises.chinup.reps == 6)
+    table.search(Workout.exercises.Exercise.fragment({"foo": True, "bar": False}))
 
 
 def remove_from_table(table) -> None:
@@ -31,8 +29,9 @@ def remove_from_table(table) -> None:
     :param table: _description_
     :type table: _type_
     """
-    # table.remove(exercises.squat < 5)
-    pass
+
+    Workout = Query()
+    table.remove(Workout.exercises.squat < 5)
 
 
 def truncate_table(table) -> None:
@@ -65,9 +64,9 @@ def main() -> None:
     )
 
     # print(db, table)
-    update_table(table)
+    # update_table(table)
     # remove_from_table(table)
-    # truncate_table(table)
+    truncate_table(table)
 
 
 if __name__ == "__main__":
