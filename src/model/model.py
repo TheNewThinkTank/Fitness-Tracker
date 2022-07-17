@@ -12,6 +12,7 @@ import json
 import pandas as pd  # type: ignore
 
 import pathlib
+import sys
 from typing import Tuple, List
 
 # from sklearn import linear_model
@@ -47,6 +48,17 @@ def get_df(
     return pd.concat(frames)
 
 
+def get_weight(df):
+    """_summary_
+
+    :param df: _description_
+    :type df: _type_
+    :return: _description_
+    :rtype: _type_
+    """
+    return df["weight"].str.strip(" kg").astype(float)
+
+
 def calc_volume(df: pd.DataFrame) -> pd.DataFrame:
     """sets times reps times load
 
@@ -59,17 +71,20 @@ def calc_volume(df: pd.DataFrame) -> pd.DataFrame:
     df_copy = df.copy()
     num_of_sets_df = df_copy.groupby("date")[["set no."]].agg("max")
     reps_df = df_copy.groupby("date")[["reps"]].agg("max")
-    df_copy["weight"] = df_copy["weight"].str.strip(" kg").astype(float)
+
+    df_copy["weight"] = get_weight(df_copy)
+
     weight_df = df_copy.groupby("date")[["weight"]].agg("max")
+
     df_res = pd.concat([num_of_sets_df, reps_df, weight_df], axis=1)
     df_res["volume"] = df_res["set no."] * df_res["reps"] * df_res["weight"]
 
     return df_res.drop(["set no.", "reps", "weight"], axis=1)
 
 
-def one_rep_max_estimator(df: pd.DataFrame) -> pd.DataFrame:
-    """The ACSM (American College of Sports Medicine) protocol
-    is used to implement the 1RM estimation
+def one_rep_max_estimator(df: pd.DataFrame, formula="acsm") -> pd.DataFrame:
+    """acsm_1rm, epley or brzycki formulas
+    are used to implement the 1RM estimation
 
     :param df: _description_
     :type df: pd.DataFrame
@@ -77,11 +92,38 @@ def one_rep_max_estimator(df: pd.DataFrame) -> pd.DataFrame:
     :rtype: pd.DataFrame
     """
 
+    def acsm_1rm(w, r):
+        """The ACSM (American College of Sports Medicine) protocol
+
+        :param w: weight
+        :type w: _type_
+        :param r: repetitions
+        :type r: _type_
+        :return: _description_
+        :rtype: _type_
+        """
+        # TODO: assert denominator is not zero
+        return w / ((100 - r * 2.5) / 100)
+
+    def epley_1rm(w, r):
+        # TODO: assert (r > 1).all()
+        return w * (1 + r / 30)
+
+    def brzycki_1rm(w, r):
+        # TODO: assert 1 < r < 37
+        return w * 36 / (37 - r)
+
     df_copy = df.copy()
 
-    df_copy["1RM"] = df["weight"].str.strip(" kg").astype(float) / (
-        (100 - df["reps"] * 2.5) / 100
-    )
+    match formula:
+        case "acsm":
+            df_copy["1RM"] = acsm_1rm(get_weight(df), df["reps"])
+        case "epley":
+            df_copy["1RM"] = epley_1rm(get_weight(df), df["reps"])
+        case "brzycki":
+            df_copy["1RM"] = brzycki_1rm(get_weight(df), df["reps"])
+        case _:
+            sys.exit("Invalid formula")
 
     return df_copy.groupby("date")[["1RM"]].agg("max")
 
@@ -156,7 +198,10 @@ def main() -> None:
 
     df = get_df(table)
     df_volume = calc_volume(df)
-    df_1rm = one_rep_max_estimator(df)
+
+    # formulas = ["acsm", "epley", "brzycki"]
+    df_1rm = one_rep_max_estimator(df)  # , formula=formulas[-1])
+
     x, y = get_data(df_1rm)
     # x, y = get_data(df_volume, y_col="volume")
 
