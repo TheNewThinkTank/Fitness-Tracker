@@ -19,7 +19,7 @@ sys.path.append(os.path.dirname(SCRIPT_DIR))
 from helpers import lookup  # type: ignore
 
 
-def insert_log(table, log_path) -> None:
+def insert_log(table, log_path: str | list) -> None:
     """Store training log: log_path in database table.
 
     :param table: A TinyDB table
