@@ -5,38 +5,52 @@ Purpose: Update or delete weight-training data
 """
 
 import json
-from tinydb import TinyDB  # type: ignore
+from tinydb import TinyDB, Query  # type: ignore
 
 
-def cleanup(db, table, action: str) -> None:
-    """Update, remove or truncate database
+def update_table(table) -> None:
+    """_summary_"""
 
-    :param db: _description_
-    :type db: _type_
+    Workout = Query()
+    # Exercise = Query()
+    # table.search(
+    #     Workout.exercises.any(
+    #         Exercise.chinup == [{"reps": 6, "set no.": 1, "weight": "13.43 kg"}]
+    #     )
+    # )
+
+    table.search(Workout.exercises.Exercise.fragment({"foo": True, "bar": False}))
+
+    # table.search(Check["json-object"]["test"].exists())
+    # table.update({"reps": 10}, Item.exercises.chinup.reps == 6)
+
+
+def remove_from_table(table) -> None:
+    """_summary_
+
     :param table: _description_
     :type table: _type_
-    :param action: _description_
-    :type action: str
+    """
+    # table.remove(exercises.squat < 5)
+    pass
+
+
+def truncate_table(table) -> None:
+    """truncate table
+
+    :param table: _description_
+    :type table: _type_
     """
 
-    # TODO: implement update and remove actions
-    if action == "update":
-        # table.update({"reps": 10}, Item.exercises == "squat")
-        pass
-
-    if action == "remove":
-        # table.remove(exercises.squat < 5)
-        pass
-
-    if action == "truncate":
-        # table.truncate()
-        # assert table.all() == []
-        pass
+    table.truncate()
+    assert table.all() == []
 
 
 def main() -> None:
+    """_summary_"""
+
     datamodels = ["real", "simulated"]
-    datatype = datamodels[0]
+    datatype = datamodels[1]
 
     data = json.load(open(file="./config.json", encoding="utf-8"))
     db = (
@@ -50,7 +64,10 @@ def main() -> None:
         else db.table(data["simulated_weight_table"])
     )
 
-    cleanup(db, table, action="truncate")
+    # print(db, table)
+    update_table(table)
+    # remove_from_table(table)
+    # truncate_table(table)
 
 
 if __name__ == "__main__":
