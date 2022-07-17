@@ -11,7 +11,6 @@ import pandas as pd  # type: ignore
 
 import pathlib
 import sys
-from typing import Tuple, List
 
 # from sklearn import linear_model
 from tinydb import TinyDB  # type: ignore
