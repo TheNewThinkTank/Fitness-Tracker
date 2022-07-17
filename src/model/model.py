@@ -1,11 +1,9 @@
 """
-    Date: 2021-12-21
-    Author: Gustav Collin Rasmussen
-    Purpose: Train a linear-regression model on simulated weight-training data,
-             using the Scikit Learn library
+Date: 2021-12-21
+Author: Gustav Collin Rasmussen
+Purpose: Train a linear-regression model on simulated weight-training data,
+    using the Scikit Learn library
 """
-
-# TODO: 1RM functions or class
 
 from datetime import datetime
 import json
@@ -48,13 +46,13 @@ def get_df(
     return pd.concat(frames)
 
 
-def get_weight(df):
+def get_weight(df: pd.DataFrame) -> pd.DataFrame:
     """_summary_
 
     :param df: _description_
-    :type df: _type_
+    :type df: pd.DataFrame
     :return: _description_
-    :rtype: _type_
+    :rtype: pd.DataFrame
     """
     return df["weight"].str.strip(" kg").astype(float)
 
@@ -88,6 +86,8 @@ def one_rep_max_estimator(df: pd.DataFrame, formula="acsm") -> pd.DataFrame:
 
     :param df: _description_
     :type df: pd.DataFrame
+    :param formula: _description_, defaults to "acsm"
+    :type formula: str, optional
     :return: _description_
     :rtype: pd.DataFrame
     """
@@ -99,7 +99,7 @@ def one_rep_max_estimator(df: pd.DataFrame, formula="acsm") -> pd.DataFrame:
         :type w: _type_
         :param r: repetitions
         :type r: _type_
-        :return: _description_
+        :return: 1 RM
         :rtype: _type_
         """
         # TODO: assert denominator is not zero
@@ -128,7 +128,7 @@ def one_rep_max_estimator(df: pd.DataFrame, formula="acsm") -> pd.DataFrame:
     return df_copy.groupby("date")[["1RM"]].agg("max")
 
 
-def get_data(df, y_col="1RM") -> Tuple[List[float], List[float]]:
+def get_data(df, y_col="1RM") -> tuple[list[float], list[float]]:
     """Get workout-timestamps and 1RM estimates
 
     :param df: Pandas dataframe with workout-timestamps
@@ -137,7 +137,7 @@ def get_data(df, y_col="1RM") -> Tuple[List[float], List[float]]:
     :param y_col: String signifying whether to use 1RM estimates or volume
     :type y_col: str
     :return: workout-timestamps and either 1RM estimates or volume
-    :rtype: Tuple[List[float], List[float]]
+    :rtype: tuple[list[float], list[float]]
     """
 
     date_strs = df.index.tolist()  # workout-dates
