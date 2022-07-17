@@ -29,8 +29,13 @@ def insert_log(table, log_path) -> None:
     :type log_path: str
     """
 
-    with open(log_path) as rf:
-        json_content = json.load(rf)
+    if isinstance(log_path, str):
+        with open(log_path) as rf:
+            json_content = json.load(rf)
+    elif isinstance(log_path, list):
+        with open(*log_path) as rf:
+            json_content = json.load(rf)
+
     table.insert(json_content)
 
 
