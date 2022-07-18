@@ -32,7 +32,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 """
 
 if __name__ == "__main__":
-    with open(f"api-docs-fitness-tracker.html", "w") as wf:
+    with open("api-docs-fitness-tracker.html", "w") as wf:
         print(HTML_TEMPLATE % json.dumps(app.openapi()), file=wf)
 
 """
