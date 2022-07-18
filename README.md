@@ -16,7 +16,8 @@ Visually inspect your progression through dates and exercises
 
 ### Run FastAPI app with Docker from CLI:
 
-`docker-compose up`
+`docker-compose up`<br>
+then visit the URL: http://localhost:8080/
 
 Alternatively,<br>
 `docker build -t ftimage .`<br>
