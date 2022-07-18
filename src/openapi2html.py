@@ -2,7 +2,7 @@
 
 import json
 
-from main import app
+from main import app  # type: ignore
 
 HTML_TEMPLATE = """<!DOCTYPE html>
 <html>
